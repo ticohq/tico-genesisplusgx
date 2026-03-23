@@ -18,3 +18,5 @@ genesis_plus_gx_libretro.*
 *.o
 *.a
 *.so
+
+build_tico
