@@ -13,13 +13,13 @@
  *   - Redistributions may not be sold, nor may they be used in a commercial
  *     product or activity.
  *
- *   - Redistributions that are modified from the original source must include the
- *     complete source code, including the source code for all components used by a
- *     binary built from the modified sources. However, as a special exception, the
- *     source code distributed need not include anything that is normally distributed
- *     (in either source or binary form) with the major components (compiler, kernel,
- *     and so on) of the operating system on which the executable runs, unless that
- *     component itself accompanies the executable.
+ *   - Redistributions that are modified from the original source must include
+ *the complete source code, including the source code for all components used by
+ *a binary built from the modified sources. However, as a special exception, the
+ *     source code distributed need not include anything that is normally
+ *distributed (in either source or binary form) with the major components
+ *(compiler, kernel, and so on) of the operating system on which the executable
+ *runs, unless that component itself accompanies the executable.
  *
  *   - Redistributions must reproduce the above copyright notice, this list of
  *     conditions and the following disclaimer in the documentation and/or other
@@ -47,11 +47,13 @@
 #define strncasecmp _strnicmp
 #endif
 
+#include "../core/types.h"
+
 #include <stdint.h>
 #include <stdlib.h>
-#include <string.h>
 #include <streams/file_stream.h>
 #include <streams/file_stream_transforms.h>
+#include <string.h>
 
 #define MAX_INPUTS 8
 #define MAX_KEYS 8
@@ -75,20 +77,22 @@
 
 #define HAVE_NO_SPRITE_LIMIT
 #define MAX_SPRITES_PER_LINE 80
-#define TMS_MAX_SPRITES_PER_LINE (config.no_sprite_limit ? MAX_SPRITES_PER_LINE : 4)
-#define MODE4_MAX_SPRITES_PER_LINE (config.no_sprite_limit ? MAX_SPRITES_PER_LINE : 8)
-#define MODE5_MAX_SPRITES_PER_LINE (config.no_sprite_limit ? MAX_SPRITES_PER_LINE : (bitmap.viewport.w >> 4))
-#define MODE5_MAX_SPRITE_PIXELS (config.no_sprite_limit ? MAX_SPRITES_PER_LINE * 32 : max_sprite_pixels)
+#define TMS_MAX_SPRITES_PER_LINE                                               \
+  (config.no_sprite_limit ? MAX_SPRITES_PER_LINE : 4)
+#define MODE4_MAX_SPRITES_PER_LINE                                             \
+  (config.no_sprite_limit ? MAX_SPRITES_PER_LINE : 8)
+#define MODE5_MAX_SPRITES_PER_LINE                                             \
+  (config.no_sprite_limit ? MAX_SPRITES_PER_LINE : (bitmap.viewport.w >> 4))
+#define MODE5_MAX_SPRITE_PIXELS                                                \
+  (config.no_sprite_limit ? MAX_SPRITES_PER_LINE * 32 : max_sprite_pixels)
 
-typedef struct
-{
+typedef struct {
   int8 device;
   uint8 port;
   uint8 padtype;
 } t_input_config;
 
-typedef struct
-{
+typedef struct {
   char version[16];
   uint8 hq_fm;
   uint8 filter;
@@ -160,18 +164,19 @@ extern char MS_BIOS_EU[256];
 extern char MS_BIOS_JP[256];
 
 extern void osd_input_update(void);
-extern int load_archive(char *filename, unsigned char *buffer, int maxsize, char *extension);
+extern int load_archive(char *filename, unsigned char *buffer, int maxsize,
+                        char *extension);
 extern void ROMCheatUpdate(void);
 extern retro_log_printf_t log_cb;
 
 #ifndef cdStream
-#define cdStream            RFILE
+#define cdStream RFILE
 #define cdStreamOpen(fname) rfopen(fname, "rb")
-#define cdStreamClose       rfclose
-#define cdStreamRead        rfread
-#define cdStreamSeek        rfseek
-#define cdStreamTell        rftell
-#define cdStreamGets        rfgets
+#define cdStreamClose rfclose
+#define cdStreamRead rfread
+#define cdStreamSeek rfseek
+#define cdStreamTell rftell
+#define cdStreamGets rfgets
 #endif
 
 #endif /* _OSD_H */
