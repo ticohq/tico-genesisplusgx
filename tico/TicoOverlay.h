@@ -108,8 +108,8 @@ private:
     int m_settingsSelection = 0;
     int m_shaderSelection = 0; // 0=None, 1=LCD, 2=Scale2x
     
-    TicoDisplayMode m_displayMode = TicoDisplayMode::Display;
-    TicoDisplaySize m_displaySize = TicoDisplaySize::_4_3;
+    TicoDisplayMode m_displayMode = TicoDisplayMode::Integer;
+    TicoDisplaySize m_displaySize = TicoDisplaySize::Auto;
 
     void LoadCoreSettings();
     void SaveCoreSettings();
