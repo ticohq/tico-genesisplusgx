@@ -3,6 +3,7 @@
     "emulator_load_state": "ステートロード",
     "emulator_settings": "設定",
     "emulator_exit_game": "ゲーム終了",
+    "emulator_disc": "ディスク",
     "emulator_select_disc": "ディスク選択",
     "emulator_slot": "スロット %d (%s)",
     "emulator_in_use": "使用中",

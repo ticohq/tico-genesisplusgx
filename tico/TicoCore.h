@@ -108,6 +108,12 @@ public:
     /// @brief Get current game path
     std::string GetGamePath() const { return m_gamePath; }
 
+    /// @brief Changes the Sega CD's disc: the tray opens now and the disc
+    /// goes in after a moment, as on the console.
+    bool SwapDiskByPath(const std::string &discPath);
+    /// @brief The disc in the drive (or about to go in)
+    std::string CurrentDiscPath() const;
+
     /// @brief Cheats for the game, from sdmc:/tico/cheats/<slug>/<game>.cht
     /// (RetroArch's format, as in libretro's cheat database) or .cheats
     /// ("# Name" then its codes). Game Genie (ABCD-EFGH, or ABC-DEF-GHI on the
@@ -178,6 +184,14 @@ private:
     /// of an archive goes in as data, named after the archive.
     retro_game_info_ext m_gameInfoExt = {};
     std::string m_gameDir, m_gameName, m_gameExt, m_gameEntry;
+
+    // Disk control (the Sega CD's disc swap), with the insert delayed
+    retro_disk_control_callback m_diskControl = {};
+    bool m_hasDiskControl = false;
+    bool m_swapPending = false;
+    int m_swapDelayFrames = 0;
+    std::string m_pendingSwapPath;
+    std::string m_currentDiscPath;
     static bool IsArchivePath(const std::string &path);
     static bool ReadRomFromArchive(const std::string &path, std::vector<uint8_t> &out,
                                    std::string &entry);

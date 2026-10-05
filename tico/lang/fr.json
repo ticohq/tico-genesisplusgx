@@ -3,6 +3,7 @@
     "emulator_load_state": "Charger",
     "emulator_settings": "Paramètres",
     "emulator_exit_game": "Quitter le Jeu",
+    "emulator_disc": "Disque",
     "emulator_select_disc": "Sélectionner le Disque",
     "emulator_slot": "Slot %d (%s)",
     "emulator_in_use": "Utilisé",

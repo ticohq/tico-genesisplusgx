@@ -3,6 +3,7 @@
     "emulator_load_state": "Load State",
     "emulator_settings": "Settings",
     "emulator_exit_game": "Exit Game",
+    "emulator_disc": "Disc",
     "emulator_select_disc": "Select Disc",
     "emulator_slot": "Slot %d (%s)",
     "emulator_in_use": "In Use",

@@ -3,6 +3,7 @@
     "emulator_load_state": "加载状态",
     "emulator_settings": "设置",
     "emulator_exit_game": "退出游戏",
+    "emulator_disc": "光盘",
     "emulator_select_disc": "选择光盘",
     "emulator_slot": "槽位 %d (%s)",
     "emulator_in_use": "已使用",

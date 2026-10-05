@@ -4,6 +4,7 @@
     "emulator_cheats": "Cheats",
     "emulator_settings": "Einstellungen",
     "emulator_exit_game": "Spiel beenden",
+    "emulator_disc": "Disc",
     "emulator_select_disc": "Disc auswählen",
     "emulator_slot": "Slot %d (%s)",
     "emulator_in_use": "Belegt",
