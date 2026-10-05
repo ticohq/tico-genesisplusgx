@@ -4,6 +4,7 @@
     "emulator_cheats": "Читы",
     "emulator_settings": "Настройки",
     "emulator_exit_game": "Выйти из игры",
+    "emulator_disc": "Диск",
     "emulator_select_disc": "Выбрать диск",
     "emulator_slot": "Слот %d (%s)",
     "emulator_in_use": "Используется",

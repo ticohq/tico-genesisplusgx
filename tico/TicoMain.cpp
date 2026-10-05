@@ -3,6 +3,7 @@
 /// Sets up SDL/Vulkan/ImGui and runs the main loop
 
 #include "TicoCore.h"
+#include "TicoDiscs.h"
 #include "UsbStorage.h"
 #include "TicoConfig.h"
 #include "TicoAudio.h"
@@ -74,6 +75,8 @@ static bool g_standalone = false;
 static std::string g_pendingLaunch;
 static void ShowLibrary();
 static void StartGame(const std::string &slug, const std::string &romArg, const std::string &titleArg);
+// The discs the Change Disc menu lists, in its order.
+static std::vector<std::string> g_discPaths;
 // the title the running game was started with, for Restart
 static std::string g_titleArg;
 
@@ -1078,6 +1081,14 @@ static void RunMenuAction()
             g_core->Reset();
         CloseMenu();
         return;
+    case Action::SwapDisc:
+    {
+        const int index = OverlayUI::ConsumeDiscIndex();
+        if (g_core && index >= 0 && index < (int)g_discPaths.size())
+            g_core->SwapDiskByPath(g_discPaths[(size_t)index]);
+        CloseMenu();
+        return;
+    }
     case Action::Restart:
         // Load the game again from disk, as if it were started anew: the core
         // unloads first (saving the game), so two never run at once.
@@ -2001,6 +2012,22 @@ int main(int argc, char *argv[])
             preview.aspect = g_core->GetAspectRatio();
         return preview;
     });
+    // Change Disc for a Sega CD game on several discs: the discs are found from
+    // the launched game (an .m3u lists them all); the current one is whatever
+    // is in the drive now
+    OverlayUI::SetDiscCallback([] {
+        std::vector<OverlayUI::DiscMenuEntry> entries;
+        g_discPaths.clear();
+        if (!g_core || TicoConfig::CURRENT_SLUG != "sega-cd")
+            return entries;
+        const std::string current = NormalizeDiscPath(g_core->CurrentDiscPath());
+        for (const DiscEntry &disc : ScanDiscs(g_core->GetGamePath()))
+        {
+            entries.push_back({disc.displayName, disc.romPath == current});
+            g_discPaths.push_back(disc.romPath);
+        }
+        return entries;
+    });
     // Cheats from the game's .cht/.cheats file; the menu hides them in hardcore.
     // Settings > Players: who is which player, and the system's screen to change it
     OverlayUI::PlayerCallbacks players;
@@ -2085,6 +2112,7 @@ int main(int argc, char *argv[])
     AutoSaveState();
     TicoVulkan::WaitIdle();
     OverlayUI::SetSlotOccupiedCallback(nullptr);
+    OverlayUI::SetDiscCallback(nullptr);
     OverlayUI::SetCheatCallbacks(nullptr, nullptr);
     OverlayUI::SetPlayerCallbacks({});
     OverlayUI::SetSlotPreviewCallback(nullptr);

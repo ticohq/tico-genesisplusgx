@@ -20,6 +20,9 @@
 #include <string.h>
 #include <stdio.h>
 #include <sys/stat.h>
+#include <dirent.h>
+#include <map>
+#include <iterator>
 #include <sys/types.h>
 #include <vector>
 #include "TicoLogger.h"
@@ -27,6 +30,13 @@
 // RetroAchievements
 #include "rc_client.h"
 #include "rc_consoles.h"
+#include "rc_hash.h"
+#ifndef INLINE
+#define INLINE inline // libchdr's headers expect the core's define
+#endif
+#include <libchdr/chd.h>
+#include <libchdr/cdrom.h>
+#include <strings.h>
 #include <curl/curl.h>
 #include <sys/stat.h>
 #include <sys/types.h>
@@ -752,6 +762,74 @@ bool TicoCore::ReadRomFromArchive(const std::string &path, std::vector<uint8_t> 
     return found;
 }
 
+// A Sega CD disc image the core opens itself.
+static bool IsDiscPath(const std::string &path)
+{
+    return HasExtension(path, ".cue") || HasExtension(path, ".iso") || HasExtension(path, ".chd") ||
+           HasExtension(path, ".m3u");
+}
+
+// @p name without its disc tag: "Night Trap (USA) (Disc 2)" -> "Night Trap (USA)".
+static std::string WithoutDiscTag(std::string name)
+{
+    std::string lower = name;
+    std::transform(lower.begin(), lower.end(), lower.begin(),
+                   [](unsigned char c) { return (char)std::tolower(c); });
+    for (const char *tag : {"(disc", "(disk", "(cd"})
+    {
+        const size_t open = lower.find(tag);
+        if (open == std::string::npos)
+            continue;
+        const size_t close = lower.find(')', open);
+        size_t start = open;
+        while (start > 0 && name[start - 1] == ' ')
+            start--;
+        name.erase(start, close == std::string::npos ? std::string::npos : close + 1 - start);
+        break;
+    }
+    return name;
+}
+
+// The first time a game's discs share their saves: each backup RAM file a disc
+// made on its own ("<game> (Disc N).brm", and the backup cart's
+// "<game> (Disc N)_<size>_cart.brm") moves to the shared name, the newest
+// when several discs have one.
+static void ShareDiscSaves(const std::string &dir, const std::string &shared)
+{
+    DIR *d = opendir(dir.c_str());
+    if (!d)
+        return;
+    std::map<std::string, std::pair<std::string, time_t>> newest; // suffix -> file, time
+    while (struct dirent *e = readdir(d))
+    {
+        const std::string file = e->d_name;
+        if (!HasExtension(file, ".brm") || file.compare(0, shared.size(), shared) != 0)
+            continue;
+        const std::string stripped = WithoutDiscTag(file);
+        if (stripped == file || stripped.compare(0, shared.size(), shared) != 0)
+            continue;
+        struct stat st;
+        if (stat((dir + file).c_str(), &st) != 0)
+            continue;
+        const std::string suffix = stripped.substr(shared.size());
+        auto it = newest.find(suffix);
+        if (it == newest.end() || st.st_mtime > it->second.second)
+            newest[suffix] = {file, st.st_mtime};
+    }
+    closedir(d);
+    for (const auto &entry : newest)
+    {
+        const std::string target = dir + shared + entry.first;
+        struct stat st;
+        if (stat(target.c_str(), &st) == 0)
+            continue; // already shared
+        std::ifstream in(dir + entry.second.first, std::ios::binary);
+        std::vector<char> data((std::istreambuf_iterator<char>(in)), std::istreambuf_iterator<char>());
+        if (!data.empty() && TicoSafeFile::Write(target, data.data(), data.size(), 0))
+            tico_debug_log("Discs share %s (from %s)", target.c_str(), entry.second.first.c_str());
+    }
+}
+
 //==============================================================================
 // Game Loading
 //==============================================================================
@@ -809,6 +887,28 @@ bool TicoCore::LoadGame(const std::string &path)
         tico_debug_log("ROM size: %zu bytes (%.1f MB)", m_romData.size(),
                        m_romData.size() / (1024.0 * 1024.0));
     }
+
+    else if (IsDiscPath(path))
+    {
+        // A game on several discs shares its Sega CD saves: with backup RAM
+        // kept per game, the core names it after the game, given here
+        // without the disc tag, so disc 2 sees disc 1's save. (Kept per BIOS,
+        // the default, every game shares one anyway.)
+        const size_t slash = path.find_last_of('/');
+        m_gameDir = slash == std::string::npos ? std::string(".") : path.substr(0, slash);
+        std::string file = path.substr(slash == std::string::npos ? 0 : slash + 1);
+        const size_t dot = file.find_last_of('.');
+        m_gameExt = dot == std::string::npos ? std::string() : file.substr(dot + 1);
+        std::transform(m_gameExt.begin(), m_gameExt.end(), m_gameExt.begin(),
+                       [](unsigned char c) { return (char)std::tolower(c); });
+        m_gameName = WithoutDiscTag(file.substr(0, dot));
+        ShareDiscSaves(m_saveDir, m_gameName);
+        m_gameInfoExt.full_path = path.c_str();
+        m_gameInfoExt.dir = m_gameDir.c_str();
+        m_gameInfoExt.name = m_gameName.c_str();
+        m_gameInfoExt.ext = m_gameExt.c_str();
+    }
+    m_currentDiscPath = path;
 
     struct retro_game_info gameInfo = {};
     gameInfo.path = path.c_str();
@@ -885,6 +985,22 @@ void TicoCore::RunFrame()
     if (!m_gameLoaded || m_paused)
         return;
 
+    if (m_swapPending && m_swapDelayFrames > 0 && --m_swapDelayFrames == 0)
+    {
+        // the chosen disc replaces the one in the drive, which then closes
+        const unsigned index = m_diskControl.get_image_index ? m_diskControl.get_image_index() : 0;
+        retro_game_info info = {m_pendingSwapPath.c_str(), nullptr, 0, ""};
+        if (m_diskControl.replace_image_index(index, &info) && m_diskControl.set_image_index(index))
+        {
+            m_currentDiscPath = m_pendingSwapPath;
+            tico_debug_log("Disc changed to %s", m_pendingSwapPath.c_str());
+        }
+        else
+            tico_debug_log("ERROR: could not change disc to %s", m_pendingSwapPath.c_str());
+        m_diskControl.set_eject_state(false);
+        m_swapPending = false;
+    }
+
     retro_run();
 
     // RetroAchievements frame tick
@@ -913,6 +1029,28 @@ void TicoCore::Reset()
         if (m_rcClient)
             rc_client_reset(m_rcClient);
     }
+}
+
+//==============================================================================
+// Disk control
+//==============================================================================
+
+bool TicoCore::SwapDiskByPath(const std::string &discPath)
+{
+    if (!m_gameLoaded || !m_hasDiskControl || !m_diskControl.set_eject_state ||
+        !m_diskControl.replace_image_index || !m_diskControl.set_image_index)
+        return false;
+    if (!m_diskControl.set_eject_state(true))
+        return false;
+    m_swapPending = true;
+    m_swapDelayFrames = 120; // two seconds with the tray open, as a player would
+    m_pendingSwapPath = discPath;
+    return true;
+}
+
+std::string TicoCore::CurrentDiscPath() const
+{
+    return m_swapPending ? m_pendingSwapPath : m_currentDiscPath;
 }
 
 //==============================================================================
@@ -1490,9 +1628,16 @@ bool TicoCore::HandleEnvironment(unsigned cmd, void *data)
         // Software rendering only: frames go through TicoShaderChain.
         return false;
 
+    case RETRO_ENVIRONMENT_SET_DISK_CONTROL_INTERFACE:
+        // NULL when the core takes it back (retro_unload_game)
+        m_hasDiskControl = data != nullptr;
+        m_diskControl = data ? *(const retro_disk_control_callback *)data : retro_disk_control_callback{};
+        return true;
+
     case RETRO_ENVIRONMENT_GET_GAME_INFO_EXT:
-        // only a ROM out of an archive; otherwise the core opens the path
-        if (!m_gameInfoExt.file_in_archive || !data)
+        // a ROM out of an archive, or a disc (named for its shared saves);
+        // otherwise the core opens the path
+        if ((!m_gameInfoExt.file_in_archive && !m_gameInfoExt.full_path) || !data)
             return false;
         *(const struct retro_game_info_ext **)data = &m_gameInfoExt;
         return true;
@@ -1859,6 +2004,173 @@ void TicoCore::SaveRAToken(const std::string& token)
     }
 }
 
+//==============================================================================
+// RetroAchievements disc hashing
+//==============================================================================
+
+// rcheevos reads .cue/.bin and .iso itself; a .chd is read here through the
+// core's libchdr. Tracks are laid out the way core/cd_hw/cdd.c reads them: one
+// after another, each padded to CD_TRACK_PADDING frames, with the pregap
+// stored only when its type is 'V'.
+namespace
+{
+rc_hash_cdreader_t s_defaultCdReader;
+
+struct ChdTrack
+{
+    chd_file *chd = nullptr;
+    uint32_t hunkBytes = 0;
+    uint64_t offset = 0;      // byte offset of the track's first sector
+    uint32_t headerBytes = 0; // 16 for MODE1_RAW, 24 for MODE2_RAW, 0 cooked
+    uint32_t dataBytes = 2048;
+    std::vector<uint8_t> hunk;
+    int64_t hunkNum = -1;
+};
+
+struct DiscHandle
+{
+    bool chd = false;
+    void *inner = nullptr; // ChdTrack, or the default reader's handle
+};
+
+ChdTrack *OpenChdTrack(const char *path, uint32_t track)
+{
+    chd_file *chd = nullptr;
+    if (chd_open(path, CHD_OPEN_READ, nullptr, &chd) != CHDERR_NONE)
+        return nullptr;
+    const chd_header *head = chd_get_header(chd);
+    if (!head || !head->hunkbytes || head->hunkbytes % CD_FRAME_SIZE)
+    {
+        chd_close(chd);
+        return nullptr;
+    }
+
+    uint64_t sectors = 0;
+    for (uint32_t index = 0; index < 99; ++index)
+    {
+        char metadata[256] = {};
+        int number = 0, frames = 0, pregap = 0, postgap = 0;
+        char type[16] = {}, subtype[16] = {}, pgtype[16] = {}, pgsub[16] = {};
+        if (chd_get_metadata(chd, CDROM_TRACK_METADATA2_TAG, index, metadata, sizeof(metadata), 0, 0, 0) == CHDERR_NONE)
+        {
+            if (sscanf(metadata, CDROM_TRACK_METADATA2_FORMAT, &number, type, subtype, &frames, &pregap,
+                       pgtype, pgsub, &postgap) != 8)
+                break;
+        }
+        else if (chd_get_metadata(chd, CDROM_TRACK_METADATA_TAG, index, metadata, sizeof(metadata), 0, 0, 0) == CHDERR_NONE)
+        {
+            if (sscanf(metadata, CDROM_TRACK_METADATA_FORMAT, &number, type, subtype, &frames) != 4)
+                break;
+        }
+        else
+            break;
+        if (pgtype[0] != 'V')
+            pregap = 0; // not stored in the file
+
+        const bool audio = !strcmp(type, "AUDIO");
+        const bool wanted = track == RC_HASH_CDTRACK_FIRST_DATA ? !audio : number == (int)track;
+        if (wanted)
+        {
+            ChdTrack *out = new ChdTrack();
+            out->chd = chd;
+            out->hunkBytes = head->hunkbytes;
+            out->offset = (sectors + (uint64_t)pregap) * CD_FRAME_SIZE;
+            out->headerBytes = !strcmp(type, "MODE1_RAW") ? 16 : !strcmp(type, "MODE2_RAW") ? 24 : 0;
+            out->dataBytes = audio ? 2352 : 2048;
+            out->hunk.resize(head->hunkbytes);
+            return out;
+        }
+        sectors += ((frames + CD_TRACK_PADDING - 1) / CD_TRACK_PADDING) * CD_TRACK_PADDING;
+    }
+    chd_close(chd);
+    return nullptr;
+}
+
+size_t ReadChdSector(ChdTrack *track, uint32_t sector, void *buffer, size_t requested)
+{
+    uint8_t *out = (uint8_t *)buffer;
+    size_t total = 0;
+    while (requested > 0)
+    {
+        const uint64_t at = track->offset + (uint64_t)sector * CD_FRAME_SIZE + track->headerBytes;
+        const int64_t hunkNum = (int64_t)(at / track->hunkBytes);
+        if (hunkNum != track->hunkNum)
+        {
+            if (chd_read(track->chd, (uint32_t)hunkNum, track->hunk.data()) != CHDERR_NONE)
+                return total;
+            track->hunkNum = hunkNum;
+        }
+        const size_t count = std::min<size_t>(requested, track->dataBytes);
+        memcpy(out + total, track->hunk.data() + at % track->hunkBytes, count);
+        total += count;
+        requested -= count;
+        ++sector;
+    }
+    return total;
+}
+
+void *RC_CCONV DiscOpenTrack(const char *path, uint32_t track, const rc_hash_iterator_t *iterator)
+{
+    DiscHandle *handle = new DiscHandle();
+    const size_t length = strlen(path);
+    handle->chd = length > 4 && !strcasecmp(path + length - 4, ".chd");
+    handle->inner = handle->chd ? (void *)OpenChdTrack(path, track)
+                                : s_defaultCdReader.open_track_iterator(path, track, iterator);
+    if (!handle->inner)
+    {
+        delete handle;
+        return nullptr;
+    }
+    return handle;
+}
+
+size_t RC_CCONV DiscReadSector(void *track, uint32_t sector, void *buffer, size_t requested)
+{
+    DiscHandle *handle = (DiscHandle *)track;
+    if (!handle)
+        return 0;
+    if (handle->chd)
+        return ReadChdSector((ChdTrack *)handle->inner, sector, buffer, requested);
+    return s_defaultCdReader.read_sector(handle->inner, sector, buffer, requested);
+}
+
+void RC_CCONV DiscCloseTrack(void *track)
+{
+    DiscHandle *handle = (DiscHandle *)track;
+    if (!handle)
+        return;
+    if (handle->chd)
+    {
+        ChdTrack *chdTrack = (ChdTrack *)handle->inner;
+        chd_close(chdTrack->chd);
+        delete chdTrack;
+    }
+    else
+        s_defaultCdReader.close_track(handle->inner);
+    delete handle;
+}
+
+uint32_t RC_CCONV DiscFirstTrackSector(void *track)
+{
+    DiscHandle *handle = (DiscHandle *)track;
+    if (!handle)
+        return 0;
+    // a CHD track's sectors count from its own start
+    return handle->chd ? 0 : s_defaultCdReader.first_track_sector(handle->inner);
+}
+
+void UseDiscReader(rc_client_t *client)
+{
+    rc_hash_get_default_cdreader(&s_defaultCdReader);
+    rc_hash_callbacks_t callbacks = {};
+    callbacks.cdreader.open_track_iterator = DiscOpenTrack;
+    callbacks.cdreader.read_sector = DiscReadSector;
+    callbacks.cdreader.close_track = DiscCloseTrack;
+    callbacks.cdreader.first_track_sector = DiscFirstTrackSector;
+    rc_client_set_hash_callbacks(client, &callbacks);
+}
+} // namespace
+
 void TicoCore::RAIdentifyGame(rc_client_t* c, TicoCore* core)
 {
     // The console the core is running names it, whatever folder or
@@ -1875,6 +2187,8 @@ void TicoCore::RAIdentifyGame(rc_client_t* c, TicoCore* core)
     default: break; // Mega Drive
     }
 
+    if (console_id == RC_CONSOLE_SEGA_CD)
+        UseDiscReader(c); // .chd as well as .cue and .iso
     tico_debug_log("RA: Identifying game... (Console ID: %u)", console_id);
     // hashed from the loaded ROM, so a zipped game is recognized too
     rc_client_begin_identify_and_load_game(c, console_id, core->m_gamePath.c_str(),

@@ -94,6 +94,7 @@ COMMON_FLAGS="$COMMON_FLAGS -I$TICO_DIR -I$TICO_DIR/deps"
 COMMON_FLAGS="$COMMON_FLAGS -I$TICO_DIR/deps/vulkan-headers"
 COMMON_FLAGS="$COMMON_FLAGS -I$TICO_DIR/deps/glslang -I$TICO_DIR/deps/SPIRV-Reflect"
 COMMON_FLAGS="$COMMON_FLAGS -I$ROOT_DIR/libretro -I$ROOT_DIR/libretro/libretro-common/include"
+COMMON_FLAGS="$COMMON_FLAGS -I$ROOT_DIR/libretro/deps/libchdr/include"
 COMMON_FLAGS="$COMMON_FLAGS -I$ROOT_DIR/rcheevos/include -DRC_CLIENT_SUPPORTS_HASH"
 
 CXXFLAGS="$COMMON_FLAGS -std=gnu++17 -fvisibility-inlines-hidden -fno-rtti -fno-exceptions"
@@ -102,6 +103,7 @@ CXXFLAGS="$COMMON_FLAGS -std=gnu++17 -fvisibility-inlines-hidden -fno-rtti -fno-
 TICO_SOURCES=(
     "$TICO_DIR/TicoMain.cpp"
     "$TICO_DIR/TicoCore.cpp"
+    "$TICO_DIR/TicoDiscs.cpp"
     "$TICO_DIR/UsbStorage.cpp"
     "$TICO_DIR/TicoVulkan.cpp"
     "$TICO_DIR/TicoShaderChain.cpp"
