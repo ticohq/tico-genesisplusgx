@@ -1,0 +1,3886 @@
+{
+  "core_id": "genesis_plus_gx",
+  "display_name": "Genesis Plus GX",
+  "config_file": "genesis_plus_gx.jsonc",
+  "slugs": [
+    "genesis",
+    "master-system",
+    "game-gear",
+    "sega-cd"
+  ],
+  "bool_true_value": "enabled",
+  "bool_false_value": "disabled",
+  "tabs": [
+    {
+      "name": "settings_genesis_plus_gx_tab_system",
+      "sections": [
+        {
+          "title": "settings_genesis_plus_gx_section_console",
+          "options": [
+            {
+              "key": "genesis_plus_gx_system_hw",
+              "label": "settings_genesis_plus_gx_hardware_model",
+              "type": "enum",
+              "default": "auto",
+              "choices": [
+                {
+                  "label": "Auto",
+                  "value": "auto"
+                },
+                {
+                  "label": "SG-1000",
+                  "value": "sg-1000"
+                },
+                {
+                  "label": "SG-1000 II",
+                  "value": "sg-1000 II"
+                },
+                {
+                  "label": "SG-1000 II + RAM Ext.",
+                  "value": "sg-1000 II + ram ext."
+                },
+                {
+                  "label": "Mark III",
+                  "value": "mark-III"
+                },
+                {
+                  "label": "Master System",
+                  "value": "master system"
+                },
+                {
+                  "label": "Master System II",
+                  "value": "master system II"
+                },
+                {
+                  "label": "Game Gear",
+                  "value": "game gear"
+                },
+                {
+                  "label": "Mega Drive/Genesis",
+                  "value": "mega drive / genesis"
+                }
+              ]
+            },
+            {
+              "key": "genesis_plus_gx_region_detect",
+              "label": "settings_genesis_plus_gx_region",
+              "type": "enum",
+              "default": "auto",
+              "choices": [
+                {
+                  "label": "Auto",
+                  "value": "auto"
+                },
+                {
+                  "label": "NTSC-U",
+                  "value": "ntsc-u"
+                },
+                {
+                  "label": "PAL",
+                  "value": "pal"
+                },
+                {
+                  "label": "NTSC-J",
+                  "value": "ntsc-j"
+                }
+              ]
+            },
+            {
+              "key": "genesis_plus_gx_vdp_mode",
+              "label": "settings_genesis_plus_gx_vdp_mode",
+              "type": "enum",
+              "default": "auto",
+              "choices": [
+                {
+                  "label": "Disabled",
+                  "value": "auto"
+                },
+                {
+                  "label": "NTSC (60Hz)",
+                  "value": "60hz"
+                },
+                {
+                  "label": "PAL (50Hz)",
+                  "value": "50hz"
+                }
+              ]
+            },
+            {
+              "key": "genesis_plus_gx_bios",
+              "label": "settings_genesis_plus_gx_use_bios",
+              "type": "bool",
+              "default": "disabled"
+            }
+          ]
+        },
+        {
+          "title": "settings_genesis_plus_gx_section_storage",
+          "options": [
+            {
+              "key": "genesis_plus_gx_system_bram",
+              "label": "settings_genesis_plus_gx_system_bram",
+              "type": "enum",
+              "default": "per bios",
+              "choices": [
+                {
+                  "label": "Per-BIOS",
+                  "value": "per bios"
+                },
+                {
+                  "label": "Per-Game",
+                  "value": "per game"
+                }
+              ]
+            },
+            {
+              "key": "genesis_plus_gx_cart_size",
+              "label": "settings_genesis_plus_gx_backup_ram_size",
+              "type": "enum",
+              "default": "4meg",
+              "choices": [
+                {
+                  "label": "Disabled",
+                  "value": "disabled"
+                },
+                {
+                  "label": "128Kbit",
+                  "value": "128k"
+                },
+                {
+                  "label": "256Kbit",
+                  "value": "256k"
+                },
+                {
+                  "label": "512Kbit",
+                  "value": "512k"
+                },
+                {
+                  "label": "1Mbit",
+                  "value": "1meg"
+                },
+                {
+                  "label": "2Mbit",
+                  "value": "2meg"
+                },
+                {
+                  "label": "4Mbit",
+                  "value": "4meg"
+                }
+              ]
+            },
+            {
+              "key": "genesis_plus_gx_cart_bram",
+              "label": "settings_genesis_plus_gx_cart_backup_ram",
+              "type": "enum",
+              "default": "per cart",
+              "choices": [
+                {
+                  "label": "Per-Cart",
+                  "value": "per cart"
+                },
+                {
+                  "label": "Per-Game",
+                  "value": "per game"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "settings_genesis_plus_gx_section_expansions",
+          "options": [
+            {
+              "key": "genesis_plus_gx_lock_on",
+              "label": "settings_genesis_plus_gx_lock_on_cartridge",
+              "type": "enum",
+              "default": "disabled",
+              "choices": [
+                {
+                  "label": "Disabled",
+                  "value": "disabled"
+                },
+                {
+                  "label": "Game Genie",
+                  "value": "game genie"
+                },
+                {
+                  "label": "Action Replay (Pro)",
+                  "value": "action replay (pro)"
+                },
+                {
+                  "label": "Sonic & Knuckles",
+                  "value": "sonic & knuckles"
+                }
+              ]
+            },
+            {
+              "key": "genesis_plus_gx_add_on",
+              "label": "settings_genesis_plus_gx_expansion_port",
+              "type": "enum",
+              "default": "auto",
+              "choices": [
+                {
+                  "label": "Auto",
+                  "value": "auto"
+                },
+                {
+                  "label": "Sega/Mega CD",
+                  "value": "sega/mega cd"
+                },
+                {
+                  "label": "MegaSD",
+                  "value": "megasd"
+                },
+                {
+                  "label": "None",
+                  "value": "none"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "settings_genesis_plus_gx_tab_display",
+      "sections": [
+        {
+          "title": "settings_genesis_plus_gx_section_screen",
+          "options": [
+            {
+              "key": "display_mode",
+              "label": "settings_genesis_plus_gx_display_mode",
+              "type": "enum",
+              "default": "Display",
+              "choices": [
+                {
+                  "label": "Integer",
+                  "value": "Integer"
+                },
+                {
+                  "label": "Display",
+                  "value": "Display"
+                }
+              ]
+            },
+            {
+              "key": "display_size",
+              "label": "settings_genesis_plus_gx_display_size",
+              "type": "enum",
+              "default": "4:3",
+              "choices": [
+                {
+                  "label": "Stretch",
+                  "value": "Stretch"
+                },
+                {
+                  "label": "4:3",
+                  "value": "4:3"
+                },
+                {
+                  "label": "16:9",
+                  "value": "16:9"
+                },
+                {
+                  "label": "Original",
+                  "value": "Original"
+                },
+                {
+                  "label": "1x",
+                  "value": "1x"
+                },
+                {
+                  "label": "2x",
+                  "value": "2x"
+                },
+                {
+                  "label": "Auto",
+                  "value": "Auto"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "settings_genesis_plus_gx_section_fast_forward",
+          "options": [
+            {
+              "key": "fast_forward_speed",
+              "label": "settings_genesis_plus_gx_fast_forward_speed",
+              "type": "enum",
+              "default": "200",
+              "choices": [
+                {
+                  "label": "150%",
+                  "value": "150"
+                },
+                {
+                  "label": "200%",
+                  "value": "200"
+                },
+                {
+                  "label": "300%",
+                  "value": "300"
+                },
+                {
+                  "label": "400%",
+                  "value": "400"
+                },
+                {
+                  "label": "Unlimited",
+                  "value": "unlimited"
+                }
+              ]
+            },
+            {
+              "key": "fast_forward_mode",
+              "label": "settings_genesis_plus_gx_fast_forward_mode",
+              "type": "enum",
+              "default": "hold",
+              "choices": [
+                {
+                  "label": "Hold",
+                  "value": "hold"
+                },
+                {
+                  "label": "Toggle",
+                  "value": "toggle"
+                }
+              ]
+            },
+            {
+              "key": "fast_forward_hotkey",
+              "label": "settings_genesis_plus_gx_fast_forward_hotkey",
+              "type": "enum",
+              "default": "ZR",
+              "choices": [
+                {
+                  "label": "A",
+                  "value": "A"
+                },
+                {
+                  "label": "B",
+                  "value": "B"
+                },
+                {
+                  "label": "X",
+                  "value": "X"
+                },
+                {
+                  "label": "Y",
+                  "value": "Y"
+                },
+                {
+                  "label": "L",
+                  "value": "L"
+                },
+                {
+                  "label": "R",
+                  "value": "R"
+                },
+                {
+                  "label": "ZL",
+                  "value": "ZL"
+                },
+                {
+                  "label": "ZR",
+                  "value": "ZR"
+                },
+                {
+                  "label": "Plus",
+                  "value": "Plus"
+                },
+                {
+                  "label": "Minus",
+                  "value": "Minus"
+                },
+                {
+                  "label": "Left stick",
+                  "value": "StickL"
+                },
+                {
+                  "label": "Right stick",
+                  "value": "StickR"
+                },
+                {
+                  "label": "Up",
+                  "value": "Up"
+                },
+                {
+                  "label": "Down",
+                  "value": "Down"
+                },
+                {
+                  "label": "Left",
+                  "value": "Left"
+                },
+                {
+                  "label": "Right",
+                  "value": "Right"
+                },
+                {
+                  "label": "Disabled",
+                  "value": "None"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "settings_genesis_plus_gx_section_hud",
+          "options": [
+            {
+              "key": "fps_counter_position",
+              "label": "settings_genesis_plus_gx_fps_counter",
+              "type": "enum",
+              "default": "hidden",
+              "choices": [
+                {
+                  "label": "Hidden",
+                  "value": "hidden"
+                },
+                {
+                  "label": "Top left",
+                  "value": "top_left"
+                },
+                {
+                  "label": "Top right",
+                  "value": "top_right"
+                },
+                {
+                  "label": "Bottom left",
+                  "value": "bottom_left"
+                },
+                {
+                  "label": "Bottom right",
+                  "value": "bottom_right"
+                }
+              ]
+            },
+            {
+              "key": "rendered_ir_position",
+              "label": "settings_genesis_plus_gx_rendered_resolution",
+              "type": "enum",
+              "default": "hidden",
+              "choices": [
+                {
+                  "label": "Hidden",
+                  "value": "hidden"
+                },
+                {
+                  "label": "Top left",
+                  "value": "top_left"
+                },
+                {
+                  "label": "Top right",
+                  "value": "top_right"
+                },
+                {
+                  "label": "Bottom left",
+                  "value": "bottom_left"
+                },
+                {
+                  "label": "Bottom right",
+                  "value": "bottom_right"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "settings_genesis_plus_gx_tab_video",
+      "sections": [
+        {
+          "title": "settings_genesis_plus_gx_section_display",
+          "options": [
+            {
+              "key": "genesis_plus_gx_aspect_ratio",
+              "label": "settings_genesis_plus_gx_aspect_ratio",
+              "type": "enum",
+              "default": "auto",
+              "choices": [
+                {
+                  "label": "Auto",
+                  "value": "auto"
+                },
+                {
+                  "label": "NTSC PAR",
+                  "value": "NTSC PAR"
+                },
+                {
+                  "label": "PAL PAR",
+                  "value": "PAL PAR"
+                },
+                {
+                  "label": "4:3",
+                  "value": "4:3"
+                },
+                {
+                  "label": "Uncorrected",
+                  "value": "Uncorrected"
+                }
+              ]
+            },
+            {
+              "key": "genesis_plus_gx_overscan",
+              "label": "settings_genesis_plus_gx_overscan_borders",
+              "type": "enum",
+              "default": "disabled",
+              "choices": [
+                {
+                  "label": "Disabled",
+                  "value": "disabled"
+                },
+                {
+                  "label": "Top/Bottom",
+                  "value": "top/bottom"
+                },
+                {
+                  "label": "Left/Right",
+                  "value": "left/right"
+                },
+                {
+                  "label": "Full",
+                  "value": "full"
+                }
+              ]
+            },
+            {
+              "key": "genesis_plus_gx_left_border",
+              "label": "settings_genesis_plus_gx_left_border",
+              "type": "enum",
+              "default": "disabled",
+              "choices": [
+                {
+                  "label": "Disabled",
+                  "value": "disabled"
+                },
+                {
+                  "label": "Left Border Only",
+                  "value": "left border"
+                },
+                {
+                  "label": "Left & Right Borders",
+                  "value": "left & right borders"
+                }
+              ]
+            },
+            {
+              "key": "genesis_plus_gx_render",
+              "label": "settings_genesis_plus_gx_interlaced_mode",
+              "type": "enum",
+              "default": "single field",
+              "choices": [
+                {
+                  "label": "Single Field",
+                  "value": "single field"
+                },
+                {
+                  "label": "Double Field",
+                  "value": "double field"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "settings_genesis_plus_gx_section_filters",
+          "options": [
+            {
+              "key": "genesis_plus_gx_blargg_ntsc_filter",
+              "label": "settings_genesis_plus_gx_ntsc_filter",
+              "type": "enum",
+              "default": "disabled",
+              "choices": [
+                {
+                  "label": "Disabled",
+                  "value": "disabled"
+                },
+                {
+                  "label": "Monochrome",
+                  "value": "monochrome"
+                },
+                {
+                  "label": "Composite",
+                  "value": "composite"
+                },
+                {
+                  "label": "S-Video",
+                  "value": "svideo"
+                },
+                {
+                  "label": "RGB",
+                  "value": "rgb"
+                }
+              ]
+            },
+            {
+              "key": "genesis_plus_gx_lcd_filter",
+              "label": "settings_genesis_plus_gx_lcd_ghosting",
+              "type": "bool",
+              "default": "disabled"
+            }
+          ]
+        },
+        {
+          "title": "settings_genesis_plus_gx_section_enhancements",
+          "options": [
+            {
+              "key": "genesis_plus_gx_gg_extra",
+              "label": "settings_genesis_plus_gx_game_gear_extended",
+              "type": "bool",
+              "default": "disabled"
+            },
+            {
+              "key": "genesis_plus_gx_no_sprite_limit",
+              "label": "settings_genesis_plus_gx_remove_sprite_limit",
+              "type": "bool",
+              "default": "disabled"
+            },
+            {
+              "key": "genesis_plus_gx_enhanced_vscroll",
+              "label": "settings_genesis_plus_gx_enhanced_vscroll",
+              "type": "bool",
+              "default": "disabled"
+            },
+            {
+              "key": "genesis_plus_gx_enhanced_vscroll_limit",
+              "label": "settings_genesis_plus_gx_vscroll_limit",
+              "type": "enum",
+              "default": "8",
+              "choices": [
+                {
+                  "label": "2",
+                  "value": "2"
+                },
+                {
+                  "label": "3",
+                  "value": "3"
+                },
+                {
+                  "label": "4",
+                  "value": "4"
+                },
+                {
+                  "label": "5",
+                  "value": "5"
+                },
+                {
+                  "label": "6",
+                  "value": "6"
+                },
+                {
+                  "label": "7",
+                  "value": "7"
+                },
+                {
+                  "label": "8",
+                  "value": "8"
+                },
+                {
+                  "label": "9",
+                  "value": "9"
+                },
+                {
+                  "label": "10",
+                  "value": "10"
+                },
+                {
+                  "label": "11",
+                  "value": "11"
+                },
+                {
+                  "label": "12",
+                  "value": "12"
+                },
+                {
+                  "label": "13",
+                  "value": "13"
+                },
+                {
+                  "label": "14",
+                  "value": "14"
+                },
+                {
+                  "label": "15",
+                  "value": "15"
+                },
+                {
+                  "label": "16",
+                  "value": "16"
+                }
+              ],
+              "depends_on": {
+                "key": "genesis_plus_gx_enhanced_vscroll",
+                "value": "enabled"
+              }
+            },
+            {
+              "key": "genesis_plus_gx_frameskip",
+              "label": "settings_genesis_plus_gx_frameskip",
+              "type": "enum",
+              "default": "disabled",
+              "choices": [
+                {
+                  "label": "Disabled",
+                  "value": "disabled"
+                },
+                {
+                  "label": "Auto",
+                  "value": "auto"
+                },
+                {
+                  "label": "Manual",
+                  "value": "manual"
+                }
+              ]
+            },
+            {
+              "key": "genesis_plus_gx_frameskip_threshold",
+              "label": "settings_genesis_plus_gx_frameskip_threshold_pct",
+              "type": "enum",
+              "default": "33",
+              "choices": [
+                {
+                  "label": "15",
+                  "value": "15"
+                },
+                {
+                  "label": "18",
+                  "value": "18"
+                },
+                {
+                  "label": "21",
+                  "value": "21"
+                },
+                {
+                  "label": "24",
+                  "value": "24"
+                },
+                {
+                  "label": "27",
+                  "value": "27"
+                },
+                {
+                  "label": "30",
+                  "value": "30"
+                },
+                {
+                  "label": "33",
+                  "value": "33"
+                },
+                {
+                  "label": "36",
+                  "value": "36"
+                },
+                {
+                  "label": "39",
+                  "value": "39"
+                },
+                {
+                  "label": "42",
+                  "value": "42"
+                },
+                {
+                  "label": "45",
+                  "value": "45"
+                },
+                {
+                  "label": "48",
+                  "value": "48"
+                },
+                {
+                  "label": "51",
+                  "value": "51"
+                },
+                {
+                  "label": "54",
+                  "value": "54"
+                },
+                {
+                  "label": "57",
+                  "value": "57"
+                },
+                {
+                  "label": "60",
+                  "value": "60"
+                }
+              ],
+              "depends_on": {
+                "key": "genesis_plus_gx_frameskip",
+                "value": "manual"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "settings_genesis_plus_gx_tab_audio",
+      "sections": [
+        {
+          "title": "settings_genesis_plus_gx_section_sound_chips",
+          "options": [
+            {
+              "key": "genesis_plus_gx_ym2612",
+              "label": "settings_genesis_plus_gx_ym2612_fm_core",
+              "type": "enum",
+              "default": "mame (ym2612)",
+              "choices": [
+                {
+                  "label": "MAME (YM2612)",
+                  "value": "mame (ym2612)"
+                },
+                {
+                  "label": "MAME (ASIC YM3438)",
+                  "value": "mame (asic ym3438)"
+                },
+                {
+                  "label": "MAME (Enhanced YM3438)",
+                  "value": "mame (enhanced ym3438)"
+                },
+                {
+                  "label": "Nuked (YM2612)",
+                  "value": "nuked (ym2612)"
+                },
+                {
+                  "label": "Nuked (YM3438)",
+                  "value": "nuked (ym3438)"
+                }
+              ]
+            },
+            {
+              "key": "genesis_plus_gx_ym2413",
+              "label": "settings_genesis_plus_gx_ym2413_fm",
+              "type": "enum",
+              "default": "auto",
+              "choices": [
+                {
+                  "label": "Auto",
+                  "value": "auto"
+                },
+                {
+                  "label": "Disabled",
+                  "value": "disabled"
+                },
+                {
+                  "label": "Enabled",
+                  "value": "enabled"
+                }
+              ]
+            },
+            {
+              "key": "genesis_plus_gx_ym2413_core",
+              "label": "settings_genesis_plus_gx_ym2413_core",
+              "type": "enum",
+              "default": "mame",
+              "choices": [
+                {
+                  "label": "MAME",
+                  "value": "mame"
+                },
+                {
+                  "label": "Nuked",
+                  "value": "nuked"
+                }
+              ]
+            },
+            {
+              "key": "genesis_plus_gx_sound_output",
+              "label": "settings_genesis_plus_gx_sound_output",
+              "type": "enum",
+              "default": "stereo",
+              "choices": [
+                {
+                  "label": "Stereo",
+                  "value": "stereo"
+                },
+                {
+                  "label": "Mono",
+                  "value": "mono"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "settings_genesis_plus_gx_section_filters",
+          "options": [
+            {
+              "key": "genesis_plus_gx_audio_filter",
+              "label": "settings_genesis_plus_gx_low_pass_filter",
+              "type": "enum",
+              "default": "disabled",
+              "choices": [
+                {
+                  "label": "Disabled",
+                  "value": "disabled"
+                },
+                {
+                  "label": "Low-Pass",
+                  "value": "low-pass"
+                },
+                {
+                  "label": "EQ",
+                  "value": "EQ"
+                }
+              ]
+            },
+            {
+              "key": "genesis_plus_gx_lowpass_range",
+              "label": "settings_genesis_plus_gx_low_pass_range_pct",
+              "type": "enum",
+              "default": "60",
+              "choices": [
+                {
+                  "label": "5",
+                  "value": "5"
+                },
+                {
+                  "label": "10",
+                  "value": "10"
+                },
+                {
+                  "label": "15",
+                  "value": "15"
+                },
+                {
+                  "label": "20",
+                  "value": "20"
+                },
+                {
+                  "label": "25",
+                  "value": "25"
+                },
+                {
+                  "label": "30",
+                  "value": "30"
+                },
+                {
+                  "label": "35",
+                  "value": "35"
+                },
+                {
+                  "label": "40",
+                  "value": "40"
+                },
+                {
+                  "label": "45",
+                  "value": "45"
+                },
+                {
+                  "label": "50",
+                  "value": "50"
+                },
+                {
+                  "label": "55",
+                  "value": "55"
+                },
+                {
+                  "label": "60",
+                  "value": "60"
+                },
+                {
+                  "label": "65",
+                  "value": "65"
+                },
+                {
+                  "label": "70",
+                  "value": "70"
+                },
+                {
+                  "label": "75",
+                  "value": "75"
+                },
+                {
+                  "label": "80",
+                  "value": "80"
+                },
+                {
+                  "label": "85",
+                  "value": "85"
+                },
+                {
+                  "label": "90",
+                  "value": "90"
+                },
+                {
+                  "label": "95",
+                  "value": "95"
+                }
+              ],
+              "depends_on": {
+                "key": "genesis_plus_gx_audio_filter",
+                "value": "low-pass"
+              }
+            },
+            {
+              "key": "genesis_plus_gx_audio_eq_low",
+              "label": "settings_genesis_plus_gx_audio_eq_low",
+              "type": "enum",
+              "default": "100",
+              "choices": [
+                {
+                  "label": "0",
+                  "value": "0"
+                },
+                {
+                  "label": "5",
+                  "value": "5"
+                },
+                {
+                  "label": "10",
+                  "value": "10"
+                },
+                {
+                  "label": "15",
+                  "value": "15"
+                },
+                {
+                  "label": "20",
+                  "value": "20"
+                },
+                {
+                  "label": "25",
+                  "value": "25"
+                },
+                {
+                  "label": "30",
+                  "value": "30"
+                },
+                {
+                  "label": "35",
+                  "value": "35"
+                },
+                {
+                  "label": "40",
+                  "value": "40"
+                },
+                {
+                  "label": "45",
+                  "value": "45"
+                },
+                {
+                  "label": "50",
+                  "value": "50"
+                },
+                {
+                  "label": "55",
+                  "value": "55"
+                },
+                {
+                  "label": "60",
+                  "value": "60"
+                },
+                {
+                  "label": "65",
+                  "value": "65"
+                },
+                {
+                  "label": "70",
+                  "value": "70"
+                },
+                {
+                  "label": "75",
+                  "value": "75"
+                },
+                {
+                  "label": "80",
+                  "value": "80"
+                },
+                {
+                  "label": "85",
+                  "value": "85"
+                },
+                {
+                  "label": "90",
+                  "value": "90"
+                },
+                {
+                  "label": "95",
+                  "value": "95"
+                },
+                {
+                  "label": "100",
+                  "value": "100"
+                }
+              ],
+              "depends_on": {
+                "key": "genesis_plus_gx_audio_filter",
+                "value": "EQ"
+              }
+            },
+            {
+              "key": "genesis_plus_gx_audio_eq_mid",
+              "label": "settings_genesis_plus_gx_audio_eq_mid",
+              "type": "enum",
+              "default": "100",
+              "choices": [
+                {
+                  "label": "0",
+                  "value": "0"
+                },
+                {
+                  "label": "5",
+                  "value": "5"
+                },
+                {
+                  "label": "10",
+                  "value": "10"
+                },
+                {
+                  "label": "15",
+                  "value": "15"
+                },
+                {
+                  "label": "20",
+                  "value": "20"
+                },
+                {
+                  "label": "25",
+                  "value": "25"
+                },
+                {
+                  "label": "30",
+                  "value": "30"
+                },
+                {
+                  "label": "35",
+                  "value": "35"
+                },
+                {
+                  "label": "40",
+                  "value": "40"
+                },
+                {
+                  "label": "45",
+                  "value": "45"
+                },
+                {
+                  "label": "50",
+                  "value": "50"
+                },
+                {
+                  "label": "55",
+                  "value": "55"
+                },
+                {
+                  "label": "60",
+                  "value": "60"
+                },
+                {
+                  "label": "65",
+                  "value": "65"
+                },
+                {
+                  "label": "70",
+                  "value": "70"
+                },
+                {
+                  "label": "75",
+                  "value": "75"
+                },
+                {
+                  "label": "80",
+                  "value": "80"
+                },
+                {
+                  "label": "85",
+                  "value": "85"
+                },
+                {
+                  "label": "90",
+                  "value": "90"
+                },
+                {
+                  "label": "95",
+                  "value": "95"
+                },
+                {
+                  "label": "100",
+                  "value": "100"
+                }
+              ],
+              "depends_on": {
+                "key": "genesis_plus_gx_audio_filter",
+                "value": "EQ"
+              }
+            },
+            {
+              "key": "genesis_plus_gx_audio_eq_high",
+              "label": "settings_genesis_plus_gx_audio_eq_high",
+              "type": "enum",
+              "default": "100",
+              "choices": [
+                {
+                  "label": "0",
+                  "value": "0"
+                },
+                {
+                  "label": "5",
+                  "value": "5"
+                },
+                {
+                  "label": "10",
+                  "value": "10"
+                },
+                {
+                  "label": "15",
+                  "value": "15"
+                },
+                {
+                  "label": "20",
+                  "value": "20"
+                },
+                {
+                  "label": "25",
+                  "value": "25"
+                },
+                {
+                  "label": "30",
+                  "value": "30"
+                },
+                {
+                  "label": "35",
+                  "value": "35"
+                },
+                {
+                  "label": "40",
+                  "value": "40"
+                },
+                {
+                  "label": "45",
+                  "value": "45"
+                },
+                {
+                  "label": "50",
+                  "value": "50"
+                },
+                {
+                  "label": "55",
+                  "value": "55"
+                },
+                {
+                  "label": "60",
+                  "value": "60"
+                },
+                {
+                  "label": "65",
+                  "value": "65"
+                },
+                {
+                  "label": "70",
+                  "value": "70"
+                },
+                {
+                  "label": "75",
+                  "value": "75"
+                },
+                {
+                  "label": "80",
+                  "value": "80"
+                },
+                {
+                  "label": "85",
+                  "value": "85"
+                },
+                {
+                  "label": "90",
+                  "value": "90"
+                },
+                {
+                  "label": "95",
+                  "value": "95"
+                },
+                {
+                  "label": "100",
+                  "value": "100"
+                }
+              ],
+              "depends_on": {
+                "key": "genesis_plus_gx_audio_filter",
+                "value": "EQ"
+              }
+            }
+          ]
+        },
+        {
+          "title": "settings_genesis_plus_gx_section_volume",
+          "options": [
+            {
+              "key": "genesis_plus_gx_psg_preamp",
+              "label": "settings_genesis_plus_gx_psg_preamp",
+              "type": "enum",
+              "default": "150",
+              "choices": [
+                {
+                  "label": "0",
+                  "value": "0"
+                },
+                {
+                  "label": "5",
+                  "value": "5"
+                },
+                {
+                  "label": "10",
+                  "value": "10"
+                },
+                {
+                  "label": "15",
+                  "value": "15"
+                },
+                {
+                  "label": "20",
+                  "value": "20"
+                },
+                {
+                  "label": "25",
+                  "value": "25"
+                },
+                {
+                  "label": "30",
+                  "value": "30"
+                },
+                {
+                  "label": "35",
+                  "value": "35"
+                },
+                {
+                  "label": "40",
+                  "value": "40"
+                },
+                {
+                  "label": "45",
+                  "value": "45"
+                },
+                {
+                  "label": "50",
+                  "value": "50"
+                },
+                {
+                  "label": "55",
+                  "value": "55"
+                },
+                {
+                  "label": "60",
+                  "value": "60"
+                },
+                {
+                  "label": "65",
+                  "value": "65"
+                },
+                {
+                  "label": "70",
+                  "value": "70"
+                },
+                {
+                  "label": "75",
+                  "value": "75"
+                },
+                {
+                  "label": "80",
+                  "value": "80"
+                },
+                {
+                  "label": "85",
+                  "value": "85"
+                },
+                {
+                  "label": "90",
+                  "value": "90"
+                },
+                {
+                  "label": "95",
+                  "value": "95"
+                },
+                {
+                  "label": "100",
+                  "value": "100"
+                },
+                {
+                  "label": "105",
+                  "value": "105"
+                },
+                {
+                  "label": "110",
+                  "value": "110"
+                },
+                {
+                  "label": "115",
+                  "value": "115"
+                },
+                {
+                  "label": "120",
+                  "value": "120"
+                },
+                {
+                  "label": "125",
+                  "value": "125"
+                },
+                {
+                  "label": "130",
+                  "value": "130"
+                },
+                {
+                  "label": "135",
+                  "value": "135"
+                },
+                {
+                  "label": "140",
+                  "value": "140"
+                },
+                {
+                  "label": "145",
+                  "value": "145"
+                },
+                {
+                  "label": "150",
+                  "value": "150"
+                },
+                {
+                  "label": "155",
+                  "value": "155"
+                },
+                {
+                  "label": "160",
+                  "value": "160"
+                },
+                {
+                  "label": "165",
+                  "value": "165"
+                },
+                {
+                  "label": "170",
+                  "value": "170"
+                },
+                {
+                  "label": "175",
+                  "value": "175"
+                },
+                {
+                  "label": "180",
+                  "value": "180"
+                },
+                {
+                  "label": "185",
+                  "value": "185"
+                },
+                {
+                  "label": "190",
+                  "value": "190"
+                },
+                {
+                  "label": "195",
+                  "value": "195"
+                },
+                {
+                  "label": "200",
+                  "value": "200"
+                }
+              ]
+            },
+            {
+              "key": "genesis_plus_gx_fm_preamp",
+              "label": "settings_genesis_plus_gx_fm_preamp",
+              "type": "enum",
+              "default": "100",
+              "choices": [
+                {
+                  "label": "0",
+                  "value": "0"
+                },
+                {
+                  "label": "5",
+                  "value": "5"
+                },
+                {
+                  "label": "10",
+                  "value": "10"
+                },
+                {
+                  "label": "15",
+                  "value": "15"
+                },
+                {
+                  "label": "20",
+                  "value": "20"
+                },
+                {
+                  "label": "25",
+                  "value": "25"
+                },
+                {
+                  "label": "30",
+                  "value": "30"
+                },
+                {
+                  "label": "35",
+                  "value": "35"
+                },
+                {
+                  "label": "40",
+                  "value": "40"
+                },
+                {
+                  "label": "45",
+                  "value": "45"
+                },
+                {
+                  "label": "50",
+                  "value": "50"
+                },
+                {
+                  "label": "55",
+                  "value": "55"
+                },
+                {
+                  "label": "60",
+                  "value": "60"
+                },
+                {
+                  "label": "65",
+                  "value": "65"
+                },
+                {
+                  "label": "70",
+                  "value": "70"
+                },
+                {
+                  "label": "75",
+                  "value": "75"
+                },
+                {
+                  "label": "80",
+                  "value": "80"
+                },
+                {
+                  "label": "85",
+                  "value": "85"
+                },
+                {
+                  "label": "90",
+                  "value": "90"
+                },
+                {
+                  "label": "95",
+                  "value": "95"
+                },
+                {
+                  "label": "100",
+                  "value": "100"
+                },
+                {
+                  "label": "105",
+                  "value": "105"
+                },
+                {
+                  "label": "110",
+                  "value": "110"
+                },
+                {
+                  "label": "115",
+                  "value": "115"
+                },
+                {
+                  "label": "120",
+                  "value": "120"
+                },
+                {
+                  "label": "125",
+                  "value": "125"
+                },
+                {
+                  "label": "130",
+                  "value": "130"
+                },
+                {
+                  "label": "135",
+                  "value": "135"
+                },
+                {
+                  "label": "140",
+                  "value": "140"
+                },
+                {
+                  "label": "145",
+                  "value": "145"
+                },
+                {
+                  "label": "150",
+                  "value": "150"
+                },
+                {
+                  "label": "155",
+                  "value": "155"
+                },
+                {
+                  "label": "160",
+                  "value": "160"
+                },
+                {
+                  "label": "165",
+                  "value": "165"
+                },
+                {
+                  "label": "170",
+                  "value": "170"
+                },
+                {
+                  "label": "175",
+                  "value": "175"
+                },
+                {
+                  "label": "180",
+                  "value": "180"
+                },
+                {
+                  "label": "185",
+                  "value": "185"
+                },
+                {
+                  "label": "190",
+                  "value": "190"
+                },
+                {
+                  "label": "195",
+                  "value": "195"
+                },
+                {
+                  "label": "200",
+                  "value": "200"
+                }
+              ]
+            },
+            {
+              "key": "genesis_plus_gx_cdda_volume",
+              "label": "settings_genesis_plus_gx_cdda_volume",
+              "type": "enum",
+              "default": "100",
+              "choices": [
+                {
+                  "label": "0",
+                  "value": "0"
+                },
+                {
+                  "label": "5",
+                  "value": "5"
+                },
+                {
+                  "label": "10",
+                  "value": "10"
+                },
+                {
+                  "label": "15",
+                  "value": "15"
+                },
+                {
+                  "label": "20",
+                  "value": "20"
+                },
+                {
+                  "label": "25",
+                  "value": "25"
+                },
+                {
+                  "label": "30",
+                  "value": "30"
+                },
+                {
+                  "label": "35",
+                  "value": "35"
+                },
+                {
+                  "label": "40",
+                  "value": "40"
+                },
+                {
+                  "label": "45",
+                  "value": "45"
+                },
+                {
+                  "label": "50",
+                  "value": "50"
+                },
+                {
+                  "label": "55",
+                  "value": "55"
+                },
+                {
+                  "label": "60",
+                  "value": "60"
+                },
+                {
+                  "label": "65",
+                  "value": "65"
+                },
+                {
+                  "label": "70",
+                  "value": "70"
+                },
+                {
+                  "label": "75",
+                  "value": "75"
+                },
+                {
+                  "label": "80",
+                  "value": "80"
+                },
+                {
+                  "label": "85",
+                  "value": "85"
+                },
+                {
+                  "label": "90",
+                  "value": "90"
+                },
+                {
+                  "label": "95",
+                  "value": "95"
+                },
+                {
+                  "label": "100",
+                  "value": "100"
+                }
+              ]
+            },
+            {
+              "key": "genesis_plus_gx_pcm_volume",
+              "label": "settings_genesis_plus_gx_pcm_volume",
+              "type": "enum",
+              "default": "100",
+              "choices": [
+                {
+                  "label": "0",
+                  "value": "0"
+                },
+                {
+                  "label": "5",
+                  "value": "5"
+                },
+                {
+                  "label": "10",
+                  "value": "10"
+                },
+                {
+                  "label": "15",
+                  "value": "15"
+                },
+                {
+                  "label": "20",
+                  "value": "20"
+                },
+                {
+                  "label": "25",
+                  "value": "25"
+                },
+                {
+                  "label": "30",
+                  "value": "30"
+                },
+                {
+                  "label": "35",
+                  "value": "35"
+                },
+                {
+                  "label": "40",
+                  "value": "40"
+                },
+                {
+                  "label": "45",
+                  "value": "45"
+                },
+                {
+                  "label": "50",
+                  "value": "50"
+                },
+                {
+                  "label": "55",
+                  "value": "55"
+                },
+                {
+                  "label": "60",
+                  "value": "60"
+                },
+                {
+                  "label": "65",
+                  "value": "65"
+                },
+                {
+                  "label": "70",
+                  "value": "70"
+                },
+                {
+                  "label": "75",
+                  "value": "75"
+                },
+                {
+                  "label": "80",
+                  "value": "80"
+                },
+                {
+                  "label": "85",
+                  "value": "85"
+                },
+                {
+                  "label": "90",
+                  "value": "90"
+                },
+                {
+                  "label": "95",
+                  "value": "95"
+                },
+                {
+                  "label": "100",
+                  "value": "100"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "settings_genesis_plus_gx_tab_emulation",
+      "sections": [
+        {
+          "title": "settings_genesis_plus_gx_section_cpu",
+          "options": [
+            {
+              "key": "genesis_plus_gx_overclock",
+              "label": "settings_genesis_plus_gx_cpu_overclock",
+              "type": "enum",
+              "default": "100",
+              "choices": [
+                {
+                  "label": "100%",
+                  "value": "100"
+                },
+                {
+                  "label": "125%",
+                  "value": "125"
+                },
+                {
+                  "label": "150%",
+                  "value": "150"
+                },
+                {
+                  "label": "175%",
+                  "value": "175"
+                },
+                {
+                  "label": "200%",
+                  "value": "200"
+                },
+                {
+                  "label": "225%",
+                  "value": "225"
+                },
+                {
+                  "label": "250%",
+                  "value": "250"
+                },
+                {
+                  "label": "275%",
+                  "value": "275"
+                },
+                {
+                  "label": "300%",
+                  "value": "300"
+                },
+                {
+                  "label": "325%",
+                  "value": "325"
+                },
+                {
+                  "label": "350%",
+                  "value": "350"
+                },
+                {
+                  "label": "375%",
+                  "value": "375"
+                },
+                {
+                  "label": "400%",
+                  "value": "400"
+                },
+                {
+                  "label": "425%",
+                  "value": "425"
+                },
+                {
+                  "label": "450%",
+                  "value": "450"
+                },
+                {
+                  "label": "475%",
+                  "value": "475"
+                },
+                {
+                  "label": "500%",
+                  "value": "500"
+                }
+              ]
+            },
+            {
+              "key": "genesis_plus_gx_force_dtack",
+              "label": "settings_genesis_plus_gx_force_dtack",
+              "type": "bool",
+              "default": "enabled"
+            },
+            {
+              "key": "genesis_plus_gx_addr_error",
+              "label": "settings_genesis_plus_gx_68k_address_error",
+              "type": "bool",
+              "default": "enabled"
+            }
+          ]
+        },
+        {
+          "title": "settings_genesis_plus_gx_section_cd",
+          "options": [
+            {
+              "key": "genesis_plus_gx_cd_latency",
+              "label": "settings_genesis_plus_gx_cd_access_latency",
+              "type": "bool",
+              "default": "enabled"
+            },
+            {
+              "key": "genesis_plus_gx_cd_precache",
+              "label": "settings_genesis_plus_gx_cd_precache",
+              "type": "bool",
+              "default": "disabled"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "settings_genesis_plus_gx_tab_advanced",
+      "sections": [
+        {
+          "title": "settings_genesis_plus_gx_section_sound_channels",
+          "options": [
+            {
+              "key": "genesis_plus_gx_psg_channel_0_volume",
+              "label": "settings_genesis_plus_gx_psg_channel_0_volume",
+              "type": "enum",
+              "default": "100",
+              "choices": [
+                {
+                  "label": "0",
+                  "value": "0"
+                },
+                {
+                  "label": "10",
+                  "value": "10"
+                },
+                {
+                  "label": "20",
+                  "value": "20"
+                },
+                {
+                  "label": "30",
+                  "value": "30"
+                },
+                {
+                  "label": "40",
+                  "value": "40"
+                },
+                {
+                  "label": "50",
+                  "value": "50"
+                },
+                {
+                  "label": "60",
+                  "value": "60"
+                },
+                {
+                  "label": "70",
+                  "value": "70"
+                },
+                {
+                  "label": "80",
+                  "value": "80"
+                },
+                {
+                  "label": "90",
+                  "value": "90"
+                },
+                {
+                  "label": "100",
+                  "value": "100"
+                }
+              ]
+            },
+            {
+              "key": "genesis_plus_gx_psg_channel_1_volume",
+              "label": "settings_genesis_plus_gx_psg_channel_1_volume",
+              "type": "enum",
+              "default": "100",
+              "choices": [
+                {
+                  "label": "0",
+                  "value": "0"
+                },
+                {
+                  "label": "10",
+                  "value": "10"
+                },
+                {
+                  "label": "20",
+                  "value": "20"
+                },
+                {
+                  "label": "30",
+                  "value": "30"
+                },
+                {
+                  "label": "40",
+                  "value": "40"
+                },
+                {
+                  "label": "50",
+                  "value": "50"
+                },
+                {
+                  "label": "60",
+                  "value": "60"
+                },
+                {
+                  "label": "70",
+                  "value": "70"
+                },
+                {
+                  "label": "80",
+                  "value": "80"
+                },
+                {
+                  "label": "90",
+                  "value": "90"
+                },
+                {
+                  "label": "100",
+                  "value": "100"
+                }
+              ]
+            },
+            {
+              "key": "genesis_plus_gx_psg_channel_2_volume",
+              "label": "settings_genesis_plus_gx_psg_channel_2_volume",
+              "type": "enum",
+              "default": "100",
+              "choices": [
+                {
+                  "label": "0",
+                  "value": "0"
+                },
+                {
+                  "label": "10",
+                  "value": "10"
+                },
+                {
+                  "label": "20",
+                  "value": "20"
+                },
+                {
+                  "label": "30",
+                  "value": "30"
+                },
+                {
+                  "label": "40",
+                  "value": "40"
+                },
+                {
+                  "label": "50",
+                  "value": "50"
+                },
+                {
+                  "label": "60",
+                  "value": "60"
+                },
+                {
+                  "label": "70",
+                  "value": "70"
+                },
+                {
+                  "label": "80",
+                  "value": "80"
+                },
+                {
+                  "label": "90",
+                  "value": "90"
+                },
+                {
+                  "label": "100",
+                  "value": "100"
+                }
+              ]
+            },
+            {
+              "key": "genesis_plus_gx_psg_channel_3_volume",
+              "label": "settings_genesis_plus_gx_psg_channel_3_volume",
+              "type": "enum",
+              "default": "100",
+              "choices": [
+                {
+                  "label": "0",
+                  "value": "0"
+                },
+                {
+                  "label": "10",
+                  "value": "10"
+                },
+                {
+                  "label": "20",
+                  "value": "20"
+                },
+                {
+                  "label": "30",
+                  "value": "30"
+                },
+                {
+                  "label": "40",
+                  "value": "40"
+                },
+                {
+                  "label": "50",
+                  "value": "50"
+                },
+                {
+                  "label": "60",
+                  "value": "60"
+                },
+                {
+                  "label": "70",
+                  "value": "70"
+                },
+                {
+                  "label": "80",
+                  "value": "80"
+                },
+                {
+                  "label": "90",
+                  "value": "90"
+                },
+                {
+                  "label": "100",
+                  "value": "100"
+                }
+              ]
+            },
+            {
+              "key": "genesis_plus_gx_md_channel_0_volume",
+              "label": "settings_genesis_plus_gx_md_channel_0_volume",
+              "type": "enum",
+              "default": "100",
+              "choices": [
+                {
+                  "label": "0",
+                  "value": "0"
+                },
+                {
+                  "label": "10",
+                  "value": "10"
+                },
+                {
+                  "label": "20",
+                  "value": "20"
+                },
+                {
+                  "label": "30",
+                  "value": "30"
+                },
+                {
+                  "label": "40",
+                  "value": "40"
+                },
+                {
+                  "label": "50",
+                  "value": "50"
+                },
+                {
+                  "label": "60",
+                  "value": "60"
+                },
+                {
+                  "label": "70",
+                  "value": "70"
+                },
+                {
+                  "label": "80",
+                  "value": "80"
+                },
+                {
+                  "label": "90",
+                  "value": "90"
+                },
+                {
+                  "label": "100",
+                  "value": "100"
+                }
+              ]
+            },
+            {
+              "key": "genesis_plus_gx_md_channel_1_volume",
+              "label": "settings_genesis_plus_gx_md_channel_1_volume",
+              "type": "enum",
+              "default": "100",
+              "choices": [
+                {
+                  "label": "0",
+                  "value": "0"
+                },
+                {
+                  "label": "10",
+                  "value": "10"
+                },
+                {
+                  "label": "20",
+                  "value": "20"
+                },
+                {
+                  "label": "30",
+                  "value": "30"
+                },
+                {
+                  "label": "40",
+                  "value": "40"
+                },
+                {
+                  "label": "50",
+                  "value": "50"
+                },
+                {
+                  "label": "60",
+                  "value": "60"
+                },
+                {
+                  "label": "70",
+                  "value": "70"
+                },
+                {
+                  "label": "80",
+                  "value": "80"
+                },
+                {
+                  "label": "90",
+                  "value": "90"
+                },
+                {
+                  "label": "100",
+                  "value": "100"
+                }
+              ]
+            },
+            {
+              "key": "genesis_plus_gx_md_channel_2_volume",
+              "label": "settings_genesis_plus_gx_md_channel_2_volume",
+              "type": "enum",
+              "default": "100",
+              "choices": [
+                {
+                  "label": "0",
+                  "value": "0"
+                },
+                {
+                  "label": "10",
+                  "value": "10"
+                },
+                {
+                  "label": "20",
+                  "value": "20"
+                },
+                {
+                  "label": "30",
+                  "value": "30"
+                },
+                {
+                  "label": "40",
+                  "value": "40"
+                },
+                {
+                  "label": "50",
+                  "value": "50"
+                },
+                {
+                  "label": "60",
+                  "value": "60"
+                },
+                {
+                  "label": "70",
+                  "value": "70"
+                },
+                {
+                  "label": "80",
+                  "value": "80"
+                },
+                {
+                  "label": "90",
+                  "value": "90"
+                },
+                {
+                  "label": "100",
+                  "value": "100"
+                }
+              ]
+            },
+            {
+              "key": "genesis_plus_gx_md_channel_3_volume",
+              "label": "settings_genesis_plus_gx_md_channel_3_volume",
+              "type": "enum",
+              "default": "100",
+              "choices": [
+                {
+                  "label": "0",
+                  "value": "0"
+                },
+                {
+                  "label": "10",
+                  "value": "10"
+                },
+                {
+                  "label": "20",
+                  "value": "20"
+                },
+                {
+                  "label": "30",
+                  "value": "30"
+                },
+                {
+                  "label": "40",
+                  "value": "40"
+                },
+                {
+                  "label": "50",
+                  "value": "50"
+                },
+                {
+                  "label": "60",
+                  "value": "60"
+                },
+                {
+                  "label": "70",
+                  "value": "70"
+                },
+                {
+                  "label": "80",
+                  "value": "80"
+                },
+                {
+                  "label": "90",
+                  "value": "90"
+                },
+                {
+                  "label": "100",
+                  "value": "100"
+                }
+              ]
+            },
+            {
+              "key": "genesis_plus_gx_md_channel_4_volume",
+              "label": "settings_genesis_plus_gx_md_channel_4_volume",
+              "type": "enum",
+              "default": "100",
+              "choices": [
+                {
+                  "label": "0",
+                  "value": "0"
+                },
+                {
+                  "label": "10",
+                  "value": "10"
+                },
+                {
+                  "label": "20",
+                  "value": "20"
+                },
+                {
+                  "label": "30",
+                  "value": "30"
+                },
+                {
+                  "label": "40",
+                  "value": "40"
+                },
+                {
+                  "label": "50",
+                  "value": "50"
+                },
+                {
+                  "label": "60",
+                  "value": "60"
+                },
+                {
+                  "label": "70",
+                  "value": "70"
+                },
+                {
+                  "label": "80",
+                  "value": "80"
+                },
+                {
+                  "label": "90",
+                  "value": "90"
+                },
+                {
+                  "label": "100",
+                  "value": "100"
+                }
+              ]
+            },
+            {
+              "key": "genesis_plus_gx_md_channel_5_volume",
+              "label": "settings_genesis_plus_gx_md_channel_5_volume",
+              "type": "enum",
+              "default": "100",
+              "choices": [
+                {
+                  "label": "0",
+                  "value": "0"
+                },
+                {
+                  "label": "10",
+                  "value": "10"
+                },
+                {
+                  "label": "20",
+                  "value": "20"
+                },
+                {
+                  "label": "30",
+                  "value": "30"
+                },
+                {
+                  "label": "40",
+                  "value": "40"
+                },
+                {
+                  "label": "50",
+                  "value": "50"
+                },
+                {
+                  "label": "60",
+                  "value": "60"
+                },
+                {
+                  "label": "70",
+                  "value": "70"
+                },
+                {
+                  "label": "80",
+                  "value": "80"
+                },
+                {
+                  "label": "90",
+                  "value": "90"
+                },
+                {
+                  "label": "100",
+                  "value": "100"
+                }
+              ]
+            },
+            {
+              "key": "genesis_plus_gx_sms_fm_channel_0_volume",
+              "label": "settings_genesis_plus_gx_sms_fm_channel_0_volume",
+              "type": "enum",
+              "default": "100",
+              "choices": [
+                {
+                  "label": "0",
+                  "value": "0"
+                },
+                {
+                  "label": "10",
+                  "value": "10"
+                },
+                {
+                  "label": "20",
+                  "value": "20"
+                },
+                {
+                  "label": "30",
+                  "value": "30"
+                },
+                {
+                  "label": "40",
+                  "value": "40"
+                },
+                {
+                  "label": "50",
+                  "value": "50"
+                },
+                {
+                  "label": "60",
+                  "value": "60"
+                },
+                {
+                  "label": "70",
+                  "value": "70"
+                },
+                {
+                  "label": "80",
+                  "value": "80"
+                },
+                {
+                  "label": "90",
+                  "value": "90"
+                },
+                {
+                  "label": "100",
+                  "value": "100"
+                }
+              ]
+            },
+            {
+              "key": "genesis_plus_gx_sms_fm_channel_1_volume",
+              "label": "settings_genesis_plus_gx_sms_fm_channel_1_volume",
+              "type": "enum",
+              "default": "100",
+              "choices": [
+                {
+                  "label": "0",
+                  "value": "0"
+                },
+                {
+                  "label": "10",
+                  "value": "10"
+                },
+                {
+                  "label": "20",
+                  "value": "20"
+                },
+                {
+                  "label": "30",
+                  "value": "30"
+                },
+                {
+                  "label": "40",
+                  "value": "40"
+                },
+                {
+                  "label": "50",
+                  "value": "50"
+                },
+                {
+                  "label": "60",
+                  "value": "60"
+                },
+                {
+                  "label": "70",
+                  "value": "70"
+                },
+                {
+                  "label": "80",
+                  "value": "80"
+                },
+                {
+                  "label": "90",
+                  "value": "90"
+                },
+                {
+                  "label": "100",
+                  "value": "100"
+                }
+              ]
+            },
+            {
+              "key": "genesis_plus_gx_sms_fm_channel_2_volume",
+              "label": "settings_genesis_plus_gx_sms_fm_channel_2_volume",
+              "type": "enum",
+              "default": "100",
+              "choices": [
+                {
+                  "label": "0",
+                  "value": "0"
+                },
+                {
+                  "label": "10",
+                  "value": "10"
+                },
+                {
+                  "label": "20",
+                  "value": "20"
+                },
+                {
+                  "label": "30",
+                  "value": "30"
+                },
+                {
+                  "label": "40",
+                  "value": "40"
+                },
+                {
+                  "label": "50",
+                  "value": "50"
+                },
+                {
+                  "label": "60",
+                  "value": "60"
+                },
+                {
+                  "label": "70",
+                  "value": "70"
+                },
+                {
+                  "label": "80",
+                  "value": "80"
+                },
+                {
+                  "label": "90",
+                  "value": "90"
+                },
+                {
+                  "label": "100",
+                  "value": "100"
+                }
+              ]
+            },
+            {
+              "key": "genesis_plus_gx_sms_fm_channel_3_volume",
+              "label": "settings_genesis_plus_gx_sms_fm_channel_3_volume",
+              "type": "enum",
+              "default": "100",
+              "choices": [
+                {
+                  "label": "0",
+                  "value": "0"
+                },
+                {
+                  "label": "10",
+                  "value": "10"
+                },
+                {
+                  "label": "20",
+                  "value": "20"
+                },
+                {
+                  "label": "30",
+                  "value": "30"
+                },
+                {
+                  "label": "40",
+                  "value": "40"
+                },
+                {
+                  "label": "50",
+                  "value": "50"
+                },
+                {
+                  "label": "60",
+                  "value": "60"
+                },
+                {
+                  "label": "70",
+                  "value": "70"
+                },
+                {
+                  "label": "80",
+                  "value": "80"
+                },
+                {
+                  "label": "90",
+                  "value": "90"
+                },
+                {
+                  "label": "100",
+                  "value": "100"
+                }
+              ]
+            },
+            {
+              "key": "genesis_plus_gx_sms_fm_channel_4_volume",
+              "label": "settings_genesis_plus_gx_sms_fm_channel_4_volume",
+              "type": "enum",
+              "default": "100",
+              "choices": [
+                {
+                  "label": "0",
+                  "value": "0"
+                },
+                {
+                  "label": "10",
+                  "value": "10"
+                },
+                {
+                  "label": "20",
+                  "value": "20"
+                },
+                {
+                  "label": "30",
+                  "value": "30"
+                },
+                {
+                  "label": "40",
+                  "value": "40"
+                },
+                {
+                  "label": "50",
+                  "value": "50"
+                },
+                {
+                  "label": "60",
+                  "value": "60"
+                },
+                {
+                  "label": "70",
+                  "value": "70"
+                },
+                {
+                  "label": "80",
+                  "value": "80"
+                },
+                {
+                  "label": "90",
+                  "value": "90"
+                },
+                {
+                  "label": "100",
+                  "value": "100"
+                }
+              ]
+            },
+            {
+              "key": "genesis_plus_gx_sms_fm_channel_5_volume",
+              "label": "settings_genesis_plus_gx_sms_fm_channel_5_volume",
+              "type": "enum",
+              "default": "100",
+              "choices": [
+                {
+                  "label": "0",
+                  "value": "0"
+                },
+                {
+                  "label": "10",
+                  "value": "10"
+                },
+                {
+                  "label": "20",
+                  "value": "20"
+                },
+                {
+                  "label": "30",
+                  "value": "30"
+                },
+                {
+                  "label": "40",
+                  "value": "40"
+                },
+                {
+                  "label": "50",
+                  "value": "50"
+                },
+                {
+                  "label": "60",
+                  "value": "60"
+                },
+                {
+                  "label": "70",
+                  "value": "70"
+                },
+                {
+                  "label": "80",
+                  "value": "80"
+                },
+                {
+                  "label": "90",
+                  "value": "90"
+                },
+                {
+                  "label": "100",
+                  "value": "100"
+                }
+              ]
+            },
+            {
+              "key": "genesis_plus_gx_sms_fm_channel_6_volume",
+              "label": "settings_genesis_plus_gx_sms_fm_channel_6_volume",
+              "type": "enum",
+              "default": "100",
+              "choices": [
+                {
+                  "label": "0",
+                  "value": "0"
+                },
+                {
+                  "label": "10",
+                  "value": "10"
+                },
+                {
+                  "label": "20",
+                  "value": "20"
+                },
+                {
+                  "label": "30",
+                  "value": "30"
+                },
+                {
+                  "label": "40",
+                  "value": "40"
+                },
+                {
+                  "label": "50",
+                  "value": "50"
+                },
+                {
+                  "label": "60",
+                  "value": "60"
+                },
+                {
+                  "label": "70",
+                  "value": "70"
+                },
+                {
+                  "label": "80",
+                  "value": "80"
+                },
+                {
+                  "label": "90",
+                  "value": "90"
+                },
+                {
+                  "label": "100",
+                  "value": "100"
+                }
+              ]
+            },
+            {
+              "key": "genesis_plus_gx_sms_fm_channel_7_volume",
+              "label": "settings_genesis_plus_gx_sms_fm_channel_7_volume",
+              "type": "enum",
+              "default": "100",
+              "choices": [
+                {
+                  "label": "0",
+                  "value": "0"
+                },
+                {
+                  "label": "10",
+                  "value": "10"
+                },
+                {
+                  "label": "20",
+                  "value": "20"
+                },
+                {
+                  "label": "30",
+                  "value": "30"
+                },
+                {
+                  "label": "40",
+                  "value": "40"
+                },
+                {
+                  "label": "50",
+                  "value": "50"
+                },
+                {
+                  "label": "60",
+                  "value": "60"
+                },
+                {
+                  "label": "70",
+                  "value": "70"
+                },
+                {
+                  "label": "80",
+                  "value": "80"
+                },
+                {
+                  "label": "90",
+                  "value": "90"
+                },
+                {
+                  "label": "100",
+                  "value": "100"
+                }
+              ]
+            },
+            {
+              "key": "genesis_plus_gx_sms_fm_channel_8_volume",
+              "label": "settings_genesis_plus_gx_sms_fm_channel_8_volume",
+              "type": "enum",
+              "default": "100",
+              "choices": [
+                {
+                  "label": "0",
+                  "value": "0"
+                },
+                {
+                  "label": "10",
+                  "value": "10"
+                },
+                {
+                  "label": "20",
+                  "value": "20"
+                },
+                {
+                  "label": "30",
+                  "value": "30"
+                },
+                {
+                  "label": "40",
+                  "value": "40"
+                },
+                {
+                  "label": "50",
+                  "value": "50"
+                },
+                {
+                  "label": "60",
+                  "value": "60"
+                },
+                {
+                  "label": "70",
+                  "value": "70"
+                },
+                {
+                  "label": "80",
+                  "value": "80"
+                },
+                {
+                  "label": "90",
+                  "value": "90"
+                },
+                {
+                  "label": "100",
+                  "value": "100"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "settings_genesis_plus_gx_tab_controls",
+      "sections": [
+        {
+          "title": "settings_genesis_plus_gx_section_button_mapping",
+          "options": [
+            {
+              "key": "map_a",
+              "label": "settings_genesis_plus_gx_map_a",
+              "type": "enum",
+              "default": "Y",
+              "choices": [
+                {
+                  "label": "A",
+                  "value": "A"
+                },
+                {
+                  "label": "B",
+                  "value": "B"
+                },
+                {
+                  "label": "X",
+                  "value": "X"
+                },
+                {
+                  "label": "Y",
+                  "value": "Y"
+                },
+                {
+                  "label": "L",
+                  "value": "L"
+                },
+                {
+                  "label": "R",
+                  "value": "R"
+                },
+                {
+                  "label": "ZL",
+                  "value": "ZL"
+                },
+                {
+                  "label": "ZR",
+                  "value": "ZR"
+                },
+                {
+                  "label": "Plus",
+                  "value": "Plus"
+                },
+                {
+                  "label": "Minus",
+                  "value": "Minus"
+                },
+                {
+                  "label": "Left stick",
+                  "value": "StickL"
+                },
+                {
+                  "label": "Right stick",
+                  "value": "StickR"
+                },
+                {
+                  "label": "Up",
+                  "value": "Up"
+                },
+                {
+                  "label": "Down",
+                  "value": "Down"
+                },
+                {
+                  "label": "Left",
+                  "value": "Left"
+                },
+                {
+                  "label": "Right",
+                  "value": "Right"
+                },
+                {
+                  "label": "Disabled",
+                  "value": "None"
+                }
+              ]
+            },
+            {
+              "key": "map_b",
+              "label": "settings_genesis_plus_gx_map_b",
+              "type": "enum",
+              "default": "B",
+              "choices": [
+                {
+                  "label": "A",
+                  "value": "A"
+                },
+                {
+                  "label": "B",
+                  "value": "B"
+                },
+                {
+                  "label": "X",
+                  "value": "X"
+                },
+                {
+                  "label": "Y",
+                  "value": "Y"
+                },
+                {
+                  "label": "L",
+                  "value": "L"
+                },
+                {
+                  "label": "R",
+                  "value": "R"
+                },
+                {
+                  "label": "ZL",
+                  "value": "ZL"
+                },
+                {
+                  "label": "ZR",
+                  "value": "ZR"
+                },
+                {
+                  "label": "Plus",
+                  "value": "Plus"
+                },
+                {
+                  "label": "Minus",
+                  "value": "Minus"
+                },
+                {
+                  "label": "Left stick",
+                  "value": "StickL"
+                },
+                {
+                  "label": "Right stick",
+                  "value": "StickR"
+                },
+                {
+                  "label": "Up",
+                  "value": "Up"
+                },
+                {
+                  "label": "Down",
+                  "value": "Down"
+                },
+                {
+                  "label": "Left",
+                  "value": "Left"
+                },
+                {
+                  "label": "Right",
+                  "value": "Right"
+                },
+                {
+                  "label": "Disabled",
+                  "value": "None"
+                }
+              ]
+            },
+            {
+              "key": "map_c",
+              "label": "settings_genesis_plus_gx_map_c",
+              "type": "enum",
+              "default": "A",
+              "choices": [
+                {
+                  "label": "A",
+                  "value": "A"
+                },
+                {
+                  "label": "B",
+                  "value": "B"
+                },
+                {
+                  "label": "X",
+                  "value": "X"
+                },
+                {
+                  "label": "Y",
+                  "value": "Y"
+                },
+                {
+                  "label": "L",
+                  "value": "L"
+                },
+                {
+                  "label": "R",
+                  "value": "R"
+                },
+                {
+                  "label": "ZL",
+                  "value": "ZL"
+                },
+                {
+                  "label": "ZR",
+                  "value": "ZR"
+                },
+                {
+                  "label": "Plus",
+                  "value": "Plus"
+                },
+                {
+                  "label": "Minus",
+                  "value": "Minus"
+                },
+                {
+                  "label": "Left stick",
+                  "value": "StickL"
+                },
+                {
+                  "label": "Right stick",
+                  "value": "StickR"
+                },
+                {
+                  "label": "Up",
+                  "value": "Up"
+                },
+                {
+                  "label": "Down",
+                  "value": "Down"
+                },
+                {
+                  "label": "Left",
+                  "value": "Left"
+                },
+                {
+                  "label": "Right",
+                  "value": "Right"
+                },
+                {
+                  "label": "Disabled",
+                  "value": "None"
+                }
+              ]
+            },
+            {
+              "key": "map_x",
+              "label": "settings_genesis_plus_gx_map_x",
+              "type": "enum",
+              "default": "L",
+              "choices": [
+                {
+                  "label": "A",
+                  "value": "A"
+                },
+                {
+                  "label": "B",
+                  "value": "B"
+                },
+                {
+                  "label": "X",
+                  "value": "X"
+                },
+                {
+                  "label": "Y",
+                  "value": "Y"
+                },
+                {
+                  "label": "L",
+                  "value": "L"
+                },
+                {
+                  "label": "R",
+                  "value": "R"
+                },
+                {
+                  "label": "ZL",
+                  "value": "ZL"
+                },
+                {
+                  "label": "ZR",
+                  "value": "ZR"
+                },
+                {
+                  "label": "Plus",
+                  "value": "Plus"
+                },
+                {
+                  "label": "Minus",
+                  "value": "Minus"
+                },
+                {
+                  "label": "Left stick",
+                  "value": "StickL"
+                },
+                {
+                  "label": "Right stick",
+                  "value": "StickR"
+                },
+                {
+                  "label": "Up",
+                  "value": "Up"
+                },
+                {
+                  "label": "Down",
+                  "value": "Down"
+                },
+                {
+                  "label": "Left",
+                  "value": "Left"
+                },
+                {
+                  "label": "Right",
+                  "value": "Right"
+                },
+                {
+                  "label": "Disabled",
+                  "value": "None"
+                }
+              ]
+            },
+            {
+              "key": "map_y",
+              "label": "settings_genesis_plus_gx_map_y",
+              "type": "enum",
+              "default": "X",
+              "choices": [
+                {
+                  "label": "A",
+                  "value": "A"
+                },
+                {
+                  "label": "B",
+                  "value": "B"
+                },
+                {
+                  "label": "X",
+                  "value": "X"
+                },
+                {
+                  "label": "Y",
+                  "value": "Y"
+                },
+                {
+                  "label": "L",
+                  "value": "L"
+                },
+                {
+                  "label": "R",
+                  "value": "R"
+                },
+                {
+                  "label": "ZL",
+                  "value": "ZL"
+                },
+                {
+                  "label": "ZR",
+                  "value": "ZR"
+                },
+                {
+                  "label": "Plus",
+                  "value": "Plus"
+                },
+                {
+                  "label": "Minus",
+                  "value": "Minus"
+                },
+                {
+                  "label": "Left stick",
+                  "value": "StickL"
+                },
+                {
+                  "label": "Right stick",
+                  "value": "StickR"
+                },
+                {
+                  "label": "Up",
+                  "value": "Up"
+                },
+                {
+                  "label": "Down",
+                  "value": "Down"
+                },
+                {
+                  "label": "Left",
+                  "value": "Left"
+                },
+                {
+                  "label": "Right",
+                  "value": "Right"
+                },
+                {
+                  "label": "Disabled",
+                  "value": "None"
+                }
+              ]
+            },
+            {
+              "key": "map_z",
+              "label": "settings_genesis_plus_gx_map_z",
+              "type": "enum",
+              "default": "R",
+              "choices": [
+                {
+                  "label": "A",
+                  "value": "A"
+                },
+                {
+                  "label": "B",
+                  "value": "B"
+                },
+                {
+                  "label": "X",
+                  "value": "X"
+                },
+                {
+                  "label": "Y",
+                  "value": "Y"
+                },
+                {
+                  "label": "L",
+                  "value": "L"
+                },
+                {
+                  "label": "R",
+                  "value": "R"
+                },
+                {
+                  "label": "ZL",
+                  "value": "ZL"
+                },
+                {
+                  "label": "ZR",
+                  "value": "ZR"
+                },
+                {
+                  "label": "Plus",
+                  "value": "Plus"
+                },
+                {
+                  "label": "Minus",
+                  "value": "Minus"
+                },
+                {
+                  "label": "Left stick",
+                  "value": "StickL"
+                },
+                {
+                  "label": "Right stick",
+                  "value": "StickR"
+                },
+                {
+                  "label": "Up",
+                  "value": "Up"
+                },
+                {
+                  "label": "Down",
+                  "value": "Down"
+                },
+                {
+                  "label": "Left",
+                  "value": "Left"
+                },
+                {
+                  "label": "Right",
+                  "value": "Right"
+                },
+                {
+                  "label": "Disabled",
+                  "value": "None"
+                }
+              ]
+            },
+            {
+              "key": "map_start",
+              "label": "settings_genesis_plus_gx_map_start",
+              "type": "enum",
+              "default": "Plus",
+              "choices": [
+                {
+                  "label": "A",
+                  "value": "A"
+                },
+                {
+                  "label": "B",
+                  "value": "B"
+                },
+                {
+                  "label": "X",
+                  "value": "X"
+                },
+                {
+                  "label": "Y",
+                  "value": "Y"
+                },
+                {
+                  "label": "L",
+                  "value": "L"
+                },
+                {
+                  "label": "R",
+                  "value": "R"
+                },
+                {
+                  "label": "ZL",
+                  "value": "ZL"
+                },
+                {
+                  "label": "ZR",
+                  "value": "ZR"
+                },
+                {
+                  "label": "Plus",
+                  "value": "Plus"
+                },
+                {
+                  "label": "Minus",
+                  "value": "Minus"
+                },
+                {
+                  "label": "Left stick",
+                  "value": "StickL"
+                },
+                {
+                  "label": "Right stick",
+                  "value": "StickR"
+                },
+                {
+                  "label": "Up",
+                  "value": "Up"
+                },
+                {
+                  "label": "Down",
+                  "value": "Down"
+                },
+                {
+                  "label": "Left",
+                  "value": "Left"
+                },
+                {
+                  "label": "Right",
+                  "value": "Right"
+                },
+                {
+                  "label": "Disabled",
+                  "value": "None"
+                }
+              ]
+            },
+            {
+              "key": "map_mode",
+              "label": "settings_genesis_plus_gx_map_mode",
+              "type": "enum",
+              "default": "Minus",
+              "choices": [
+                {
+                  "label": "A",
+                  "value": "A"
+                },
+                {
+                  "label": "B",
+                  "value": "B"
+                },
+                {
+                  "label": "X",
+                  "value": "X"
+                },
+                {
+                  "label": "Y",
+                  "value": "Y"
+                },
+                {
+                  "label": "L",
+                  "value": "L"
+                },
+                {
+                  "label": "R",
+                  "value": "R"
+                },
+                {
+                  "label": "ZL",
+                  "value": "ZL"
+                },
+                {
+                  "label": "ZR",
+                  "value": "ZR"
+                },
+                {
+                  "label": "Plus",
+                  "value": "Plus"
+                },
+                {
+                  "label": "Minus",
+                  "value": "Minus"
+                },
+                {
+                  "label": "Left stick",
+                  "value": "StickL"
+                },
+                {
+                  "label": "Right stick",
+                  "value": "StickR"
+                },
+                {
+                  "label": "Up",
+                  "value": "Up"
+                },
+                {
+                  "label": "Down",
+                  "value": "Down"
+                },
+                {
+                  "label": "Left",
+                  "value": "Left"
+                },
+                {
+                  "label": "Right",
+                  "value": "Right"
+                },
+                {
+                  "label": "Disabled",
+                  "value": "None"
+                }
+              ]
+            },
+            {
+              "key": "map_up",
+              "label": "settings_genesis_plus_gx_map_up",
+              "type": "enum",
+              "default": "Up",
+              "choices": [
+                {
+                  "label": "A",
+                  "value": "A"
+                },
+                {
+                  "label": "B",
+                  "value": "B"
+                },
+                {
+                  "label": "X",
+                  "value": "X"
+                },
+                {
+                  "label": "Y",
+                  "value": "Y"
+                },
+                {
+                  "label": "L",
+                  "value": "L"
+                },
+                {
+                  "label": "R",
+                  "value": "R"
+                },
+                {
+                  "label": "ZL",
+                  "value": "ZL"
+                },
+                {
+                  "label": "ZR",
+                  "value": "ZR"
+                },
+                {
+                  "label": "Plus",
+                  "value": "Plus"
+                },
+                {
+                  "label": "Minus",
+                  "value": "Minus"
+                },
+                {
+                  "label": "Left stick",
+                  "value": "StickL"
+                },
+                {
+                  "label": "Right stick",
+                  "value": "StickR"
+                },
+                {
+                  "label": "Up",
+                  "value": "Up"
+                },
+                {
+                  "label": "Down",
+                  "value": "Down"
+                },
+                {
+                  "label": "Left",
+                  "value": "Left"
+                },
+                {
+                  "label": "Right",
+                  "value": "Right"
+                },
+                {
+                  "label": "Disabled",
+                  "value": "None"
+                }
+              ]
+            },
+            {
+              "key": "map_down",
+              "label": "settings_genesis_plus_gx_map_down",
+              "type": "enum",
+              "default": "Down",
+              "choices": [
+                {
+                  "label": "A",
+                  "value": "A"
+                },
+                {
+                  "label": "B",
+                  "value": "B"
+                },
+                {
+                  "label": "X",
+                  "value": "X"
+                },
+                {
+                  "label": "Y",
+                  "value": "Y"
+                },
+                {
+                  "label": "L",
+                  "value": "L"
+                },
+                {
+                  "label": "R",
+                  "value": "R"
+                },
+                {
+                  "label": "ZL",
+                  "value": "ZL"
+                },
+                {
+                  "label": "ZR",
+                  "value": "ZR"
+                },
+                {
+                  "label": "Plus",
+                  "value": "Plus"
+                },
+                {
+                  "label": "Minus",
+                  "value": "Minus"
+                },
+                {
+                  "label": "Left stick",
+                  "value": "StickL"
+                },
+                {
+                  "label": "Right stick",
+                  "value": "StickR"
+                },
+                {
+                  "label": "Up",
+                  "value": "Up"
+                },
+                {
+                  "label": "Down",
+                  "value": "Down"
+                },
+                {
+                  "label": "Left",
+                  "value": "Left"
+                },
+                {
+                  "label": "Right",
+                  "value": "Right"
+                },
+                {
+                  "label": "Disabled",
+                  "value": "None"
+                }
+              ]
+            },
+            {
+              "key": "map_left",
+              "label": "settings_genesis_plus_gx_map_left",
+              "type": "enum",
+              "default": "Left",
+              "choices": [
+                {
+                  "label": "A",
+                  "value": "A"
+                },
+                {
+                  "label": "B",
+                  "value": "B"
+                },
+                {
+                  "label": "X",
+                  "value": "X"
+                },
+                {
+                  "label": "Y",
+                  "value": "Y"
+                },
+                {
+                  "label": "L",
+                  "value": "L"
+                },
+                {
+                  "label": "R",
+                  "value": "R"
+                },
+                {
+                  "label": "ZL",
+                  "value": "ZL"
+                },
+                {
+                  "label": "ZR",
+                  "value": "ZR"
+                },
+                {
+                  "label": "Plus",
+                  "value": "Plus"
+                },
+                {
+                  "label": "Minus",
+                  "value": "Minus"
+                },
+                {
+                  "label": "Left stick",
+                  "value": "StickL"
+                },
+                {
+                  "label": "Right stick",
+                  "value": "StickR"
+                },
+                {
+                  "label": "Up",
+                  "value": "Up"
+                },
+                {
+                  "label": "Down",
+                  "value": "Down"
+                },
+                {
+                  "label": "Left",
+                  "value": "Left"
+                },
+                {
+                  "label": "Right",
+                  "value": "Right"
+                },
+                {
+                  "label": "Disabled",
+                  "value": "None"
+                }
+              ]
+            },
+            {
+              "key": "map_right",
+              "label": "settings_genesis_plus_gx_map_right",
+              "type": "enum",
+              "default": "Right",
+              "choices": [
+                {
+                  "label": "A",
+                  "value": "A"
+                },
+                {
+                  "label": "B",
+                  "value": "B"
+                },
+                {
+                  "label": "X",
+                  "value": "X"
+                },
+                {
+                  "label": "Y",
+                  "value": "Y"
+                },
+                {
+                  "label": "L",
+                  "value": "L"
+                },
+                {
+                  "label": "R",
+                  "value": "R"
+                },
+                {
+                  "label": "ZL",
+                  "value": "ZL"
+                },
+                {
+                  "label": "ZR",
+                  "value": "ZR"
+                },
+                {
+                  "label": "Plus",
+                  "value": "Plus"
+                },
+                {
+                  "label": "Minus",
+                  "value": "Minus"
+                },
+                {
+                  "label": "Left stick",
+                  "value": "StickL"
+                },
+                {
+                  "label": "Right stick",
+                  "value": "StickR"
+                },
+                {
+                  "label": "Up",
+                  "value": "Up"
+                },
+                {
+                  "label": "Down",
+                  "value": "Down"
+                },
+                {
+                  "label": "Left",
+                  "value": "Left"
+                },
+                {
+                  "label": "Right",
+                  "value": "Right"
+                },
+                {
+                  "label": "Disabled",
+                  "value": "None"
+                }
+              ]
+            },
+            {
+              "key": "analog_dpad",
+              "label": "settings_genesis_plus_gx_analog_dpad",
+              "type": "bool",
+              "default": "enabled"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

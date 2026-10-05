@@ -12,8 +12,6 @@
 #include <vector>
 #ifdef __SWITCH__
 #include <switch.h>
-#include <switch/kernel/mutex.h>
-#include <switch/kernel/condvar.h>
 extern "C" {
 
 }
@@ -110,7 +108,7 @@ private:
 class TicoAudio
 {
 public:
-    static constexpr int SAMPLE_RATE = 48000;
+    static constexpr int SAMPLE_RATE = 44100;
     static constexpr int CHANNELS = 2;
     static constexpr size_t BUFFER_SIZE = SAMPLE_RATE * 6;
     
@@ -119,12 +117,7 @@ public:
     static constexpr size_t SDL_QUEUE_MAX_BYTES = MAX_BUFFERED_SAMPLES * sizeof(int16_t);
 
     TicoAudio() : m_buffer(BUFFER_SIZE), m_resampler(nullptr), m_deviceId(0),
-                  m_initialized(false), m_paused(false), m_fastForward(false), m_coreSampleRate(SAMPLE_RATE) {
-#ifdef __SWITCH__
-        mutexInit(&m_audioMutex);
-        condvarInit(&m_audioCond);
-#endif
-    }
+                  m_initialized(false), m_paused(false), m_fastForward(false), m_coreSampleRate(SAMPLE_RATE) {}
 
     ~TicoAudio()
     {
@@ -373,10 +366,6 @@ private:
                          underrunCount, len, bytesRead, self->m_buffer.Available());
             }
         }
-
-#ifdef __SWITCH__
-        condvarWakeAll(&self->m_audioCond);
-#endif
     }
 
     TicoRingBuffer<int16_t> m_buffer;
@@ -387,9 +376,4 @@ private:
     bool m_fastForward;
     int m_coreSampleRate;
     std::atomic<uint32_t> m_underrunCount{0};
-
-#ifdef __SWITCH__
-    Mutex m_audioMutex;
-    CondVar m_audioCond;
-#endif
 };

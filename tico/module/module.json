@@ -1,0 +1,108 @@
+{
+  "id": "genesis_plus_gx",
+  "name": "Genesis Plus GX",
+  "nro": "tico-genesisplusgx.nro",
+  "launch": "\"{nro}\" \"{slug}\" \"{rom}\" \"{title}\"",
+  "settings": "config/modules/genesis_plus_gx/settings.json",
+  "config_file": "genesis_plus_gx.jsonc",
+  "is_libretro": true,
+  "achievements": true,
+  "system_dir": "genesis",
+  "list_label": "GenesisPlusGX (MS, MD, GG & SCD)",
+  "systems": [
+    {
+      "slug": "genesis",
+      "title": "Mega Drive",
+      "short_title": "MD",
+      "extensions": [
+        ".md",
+        ".bin",
+        ".gen",
+        ".smd",
+        ".zip",
+        ".7z",
+        ".rar"
+      ],
+      "games_file": "genesis.json",
+      "retroachievements_id": 1,
+      "colors": {
+        "start": "4F9FE6",
+        "end": "4FE6D1",
+        "start_dark": "3974A8",
+        "end_dark": "39A896"
+      }
+    },
+    {
+      "slug": "master-system",
+      "title": "Master System",
+      "short_title": "SMS",
+      "extensions": [
+        ".sms",
+        ".bin",
+        ".zip",
+        ".7z",
+        ".rar"
+      ],
+      "games_file": "master-system.json",
+      "retroachievements_id": 11,
+      "colors": {
+        "start": "9FA8E6",
+        "end": "6F7AE6",
+        "start_dark": "7279A8",
+        "end_dark": "4F57A8"
+      }
+    },
+    {
+      "slug": "game-gear",
+      "title": "Game Gear",
+      "short_title": "GG",
+      "extensions": [
+        ".gg",
+        ".bin",
+        ".zip",
+        ".7z",
+        ".rar"
+      ],
+      "games_file": "game-gear.json",
+      "retroachievements_id": 15,
+      "colors": {
+        "start": "E65F9A",
+        "end": "5FE6C0",
+        "start_dark": "A84470",
+        "end_dark": "3FA890"
+      }
+    },
+    {
+      "slug": "sega-cd",
+      "title": "Sega CD",
+      "short_title": "SCD",
+      "extensions": [
+        ".bin",
+        ".cue",
+        ".iso",
+        ".chd",
+        ".m3u"
+      ],
+      "disc_based": true,
+      "naming": "redump",
+      "games_file": "sega-cd.json",
+      "retroachievements_id": 9,
+      "bios": [
+        {
+          "any_of": [
+            "bios_CD_U.bin",
+            "bios_CD_E.bin",
+            "bios_CD_J.bin"
+          ],
+          "size": 131072
+        }
+      ],
+      "colors": {
+        "start": "4FCFE6",
+        "end": "8A6FE6",
+        "start_dark": "3996A8",
+        "end_dark": "624FA8"
+      }
+    }
+  ]
+}

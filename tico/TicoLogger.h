@@ -63,7 +63,7 @@ public:
     if (!m_file) {
       mkdir("sdmc:/tico", 0777);
       mkdir("sdmc:/tico/debug", 0777);
-      m_file = fopen("sdmc:/tico/debug/genesis.txt", "a");
+      m_file = fopen("sdmc:/tico/debug/gambatte.txt", "a");
     }
     if (!m_file)
       return;

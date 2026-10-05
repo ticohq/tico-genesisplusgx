@@ -20,3 +20,4 @@ genesis_plus_gx_libretro.*
 *.so
 
 build_tico
+build_glslang_nx
