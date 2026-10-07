@@ -96,8 +96,6 @@ SOURCES_C += \
              $(LIBRETRO_DEPS_DIR)/zlib-1.2.11/inftrees.c \
              $(LIBRETRO_DEPS_DIR)/zlib-1.2.11/zutil.c
 
-
-
 ifeq ($(SHARED_LIBVORBIS),)
    SOURCES_C += $(foreach dir,$(TREMOR_SRC_DIR),$(wildcard $(dir)/*.c))
 endif
