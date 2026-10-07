@@ -640,6 +640,43 @@ static std::string StatePath(int slot)
     return dir + romName + ".state" + std::to_string(slot);
 }
 
+// A Sega CD state records the disc that was in (<state>.disc): a disc swapped to
+// in game saves under the name the game booted with, so the discs share states.
+static bool SaveStateTo(const std::string &path)
+{
+    if (!g_core->SaveState(path))
+        return false;
+    if (TicoConfig::CURRENT_SLUG == "sega-cd")
+    {
+        if (FILE *disc = std::fopen((path + ".disc").c_str(), "wb"))
+        {
+            const std::string current = NormalizeDiscPath(g_core->CurrentDiscPath());
+            std::fwrite(current.data(), 1, current.size(), disc);
+            std::fclose(disc);
+        }
+    }
+    return true;
+}
+
+// Loading a state made with another disc in puts that disc in first.
+static bool LoadStateFrom(const std::string &path)
+{
+    if (FILE *file = std::fopen((path + ".disc").c_str(), "rb"))
+    {
+        char buffer[1024] = {0};
+        const size_t length = std::fread(buffer, 1, sizeof(buffer) - 1, file);
+        std::fclose(file);
+        const std::string disc(buffer, length);
+        struct stat st;
+        if (!disc.empty() && disc != NormalizeDiscPath(g_core->CurrentDiscPath()) &&
+            stat(disc.c_str(), &st) == 0)
+        {
+            g_core->InsertDiscNow(disc);
+        }
+    }
+    return g_core->LoadState(path);
+}
+
 // The state the game is left in, saved to the auto slot (listed first in Load
 // State) whenever the core closes: Exit, Restart, the library, HOME.
 static void AutoSaveState()
@@ -647,7 +684,7 @@ static void AutoSaveState()
     if (!g_core || !g_core->IsGameLoaded())
         return;
     const std::string path = StatePath(OverlayUI::kAutoStateSlot - 1);
-    if (g_core->SaveState(path))
+    if (SaveStateTo(path))
         SaveStatePicture(path + ".png");
 }
 
@@ -669,7 +706,7 @@ static void OfferResume()
         return;
     if (mode == "always")
     {
-        if (g_core->LoadState(StatePath(OverlayUI::kAutoStateSlot - 1)))
+        if (LoadStateFrom(StatePath(OverlayUI::kAutoStateSlot - 1)))
             OverlayUI::ShowToast(SwitchFrontend::OverlayTranslation::tr("emulator_auto_loaded"));
         return;
     }
@@ -1114,7 +1151,7 @@ static void RunMenuAction()
     if (OverlayUI::IsSaveStateAction(action) && g_core)
     {
         const int slot = OverlayUI::GetStateSlotForAction(action);
-        const bool saved = g_core->SaveState(StatePath(slot - 1));
+        const bool saved = SaveStateTo(StatePath(slot - 1));
         if (saved)
             SaveStatePicture(StatePath(slot - 1) + ".png");
         OverlayUI::ShowToast(TrFormat(saved ? "emulator_state_saved" : "emulator_save_failed", slot));
@@ -1127,7 +1164,7 @@ static void RunMenuAction()
             OverlayUI::ShowToast(SwitchFrontend::OverlayTranslation::tr("emulator_hardcore_no_load"));
         else
         {
-            const bool loaded = g_core->LoadState(StatePath(slot - 1));
+            const bool loaded = LoadStateFrom(StatePath(slot - 1));
             if (loaded && slot == OverlayUI::kAutoStateSlot)
                 OverlayUI::ShowToast(SwitchFrontend::OverlayTranslation::tr("emulator_auto_loaded"));
             else

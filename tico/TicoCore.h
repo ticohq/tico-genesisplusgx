@@ -113,6 +113,9 @@ public:
     bool SwapDiskByPath(const std::string &discPath);
     /// @brief The disc in the drive (or about to go in)
     std::string CurrentDiscPath() const;
+    // Puts this disc in at once, without the eject and the wait (e.g. right
+    // before loading a state made with it in).
+    bool InsertDiscNow(const std::string &discPath);
 
     /// @brief Cheats for the game, from sdmc:/tico/cheats/<slug>/<game>.cht
     /// (RetroArch's format, as in libretro's cheat database) or .cheats
