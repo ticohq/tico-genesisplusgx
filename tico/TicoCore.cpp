@@ -1048,6 +1048,26 @@ bool TicoCore::SwapDiskByPath(const std::string &discPath)
     return true;
 }
 
+bool TicoCore::InsertDiscNow(const std::string &discPath)
+{
+    if (!m_gameLoaded || !m_hasDiskControl || !m_diskControl.set_eject_state ||
+        !m_diskControl.replace_image_index || !m_diskControl.set_image_index)
+        return false;
+    m_swapPending = false;
+    if (!m_diskControl.set_eject_state(true))
+        return false;
+    // as the delayed swap: the disc replaces the one in the drive, which then closes
+    const unsigned index = m_diskControl.get_image_index ? m_diskControl.get_image_index() : 0;
+    retro_game_info info = {discPath.c_str(), nullptr, 0, ""};
+    const bool inserted =
+        m_diskControl.replace_image_index(index, &info) && m_diskControl.set_image_index(index);
+    if (inserted)
+        m_currentDiscPath = discPath;
+    m_diskControl.set_eject_state(false);
+    tico_debug_log("InsertDiscNow %s: %s", discPath.c_str(), inserted ? "ok" : "failed");
+    return inserted;
+}
+
 std::string TicoCore::CurrentDiscPath() const
 {
     return m_swapPending ? m_pendingSwapPath : m_currentDiscPath;
