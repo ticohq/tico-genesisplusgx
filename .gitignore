@@ -21,3 +21,6 @@ genesis_plus_gx_libretro.*
 
 build_tico
 build_glslang_nx
+
+# TicoSecure build secret (shared with tico)
+/tico/TicoSecret.h
