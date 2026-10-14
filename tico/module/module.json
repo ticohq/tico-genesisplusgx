@@ -23,7 +23,7 @@
         ".7z",
         ".rar"
       ],
-      "games_file": "genesis.json",
+      "games_file": "genesis.dat",
       "retroachievements_id": 1,
       "colors": {
         "start": "4F9FE6",
@@ -43,7 +43,7 @@
         ".7z",
         ".rar"
       ],
-      "games_file": "master-system.json",
+      "games_file": "master-system.dat",
       "retroachievements_id": 11,
       "colors": {
         "start": "9FA8E6",
@@ -63,7 +63,7 @@
         ".7z",
         ".rar"
       ],
-      "games_file": "game-gear.json",
+      "games_file": "game-gear.dat",
       "retroachievements_id": 15,
       "colors": {
         "start": "E65F9A",
@@ -85,7 +85,7 @@
       ],
       "disc_based": true,
       "naming": "redump",
-      "games_file": "sega-cd.json",
+      "games_file": "sega-cd.dat",
       "retroachievements_id": 9,
       "bios": [
         {
