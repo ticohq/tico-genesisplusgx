@@ -1461,6 +1461,7 @@ static const LibraryConsole kLibraryConsoles[] = {
     {"genesis", "Mega Drive", "MD", {".md", ".bin", ".gen", ".smd", ".zip", ".7z", ".rar"}},
     {"master-system", "Master System", "SMS", {".sms", ".bin", ".zip", ".7z", ".rar"}},
     {"game-gear", "Game Gear", "GG", {".gg", ".bin", ".zip", ".7z", ".rar"}},
+    {"sg-1000", "SG-1000", "SG", {".sg", ".zip", ".7z", ".rar"}},
     {"sega-cd", "Sega CD", "SCD", {".cue", ".iso", ".chd", ".m3u"}},
 };
 
@@ -1482,6 +1483,8 @@ static std::string SlugForRom(const std::string &path)
         return "master-system";
     if (ext == ".gg")
         return "game-gear";
+    if (ext == ".sg")
+        return "sg-1000";
     if (ext == ".cue" || ext == ".iso" || ext == ".chd" || ext == ".m3u")
         return "sega-cd";
     return "genesis";

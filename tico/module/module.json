@@ -8,7 +8,7 @@
   "system_dir": "genesis_plus_gx",
   "is_libretro": true,
   "achievements": true,
-  "list_label": "GenesisPlusGX (MS, MD, GG & SCD)",
+  "list_label": "GenesisPlusGX (MS, MD, GG, SG & SCD)",
   "systems": [
     {
       "slug": "genesis",
@@ -70,6 +70,25 @@
         "end": "5FE6C0",
         "start_dark": "A84470",
         "end_dark": "3FA890"
+      }
+    },
+    {
+      "slug": "sg-1000",
+      "title": "SG-1000",
+      "short_title": "SG",
+      "extensions": [
+        ".sg",
+        ".zip",
+        ".7z",
+        ".rar"
+      ],
+      "games_file": "sg-1000.dat",
+      "retroachievements_id": 33,
+      "colors": {
+        "start": "E6C35F",
+        "end": "E6735F",
+        "start_dark": "A88A3F",
+        "end_dark": "A8503F"
       }
     },
     {

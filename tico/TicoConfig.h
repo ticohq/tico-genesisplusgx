@@ -9,10 +9,11 @@ namespace TicoConfig {
 
     constexpr const char* FONT_PATH = "romfs:/fonts/font.ttf";
 
-    // Current console slug (genesis, master-system, game-gear or sega-cd, from argv[1])
+    // Current console slug (genesis, master-system, game-gear, sg-1000 or sega-cd,
+    // from argv[1])
     inline std::string CURRENT_SLUG = "genesis";
 
-    /// @brief Set the console being booted (genesis, master-system, game-gear, sega-cd)
+    /// @brief Set the console being booted (genesis, master-system, game-gear, sg-1000, sega-cd)
     inline void SetSlug(const std::string& slug) {
         if (!slug.empty())
             CURRENT_SLUG = slug;

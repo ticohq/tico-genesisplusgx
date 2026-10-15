@@ -406,7 +406,7 @@ def build_settings(dump: dict) -> dict:
         "core_id": "genesis_plus_gx",
         "display_name": "Genesis Plus GX",
         "config_file": "genesis_plus_gx.jsonc",
-        "slugs": ["genesis", "master-system", "game-gear", "sega-cd"],
+        "slugs": ["genesis", "master-system", "game-gear", "sg-1000", "sega-cd"],
         "bool_true_value": "enabled",
         "bool_false_value": "disabled",
         "tabs": tabs,
