@@ -6,6 +6,7 @@
     "genesis",
     "master-system",
     "game-gear",
+    "sg-1000",
     "sega-cd"
   ],
   "bool_true_value": "enabled",
