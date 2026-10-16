@@ -26,6 +26,16 @@ It adds:
 
 ----------
 
+## Credits
+
+This fork is built on top of the libretro port of Genesis Plus GX, by Eke-Eke, itself based on Charles MacDonald's Genesis Plus.
+All core emulation work belongs to the Genesis Plus GX authors and contributors.
+
+- **Official Genesis Plus GX repository** — https://github.com/ekeeke/Genesis-Plus-GX
+- **libretro Genesis Plus GX** — https://github.com/libretro/Genesis-Plus-GX
+
+----------
+
 ## A Note
 
 A lot of work in this scene disappears over time — not because it lacked value, but because it was never shared.
