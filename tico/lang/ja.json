@@ -253,5 +253,6 @@
     "settings_genesis_plus_gx_vscroll_limit": "VScroll制限",
     "settings_genesis_plus_gx_ym2413_core": "YM2413 コア",
     "settings_genesis_plus_gx_ym2413_fm": "YM2413 (FM)",
-    "settings_genesis_plus_gx_ym2612_fm_core": "YM2612 (FM) コア"
+    "settings_genesis_plus_gx_ym2612_fm_core": "YM2612 (FM) コア",
+    "emulator_quick_menu_tip": "{plus}と{minus}を同時に押すとクイックメニューが開きます"
 }

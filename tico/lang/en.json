@@ -183,5 +183,6 @@
     "settings_genesis_plus_gx_vscroll_limit": "VScroll Limit",
     "settings_genesis_plus_gx_ym2413_core": "YM2413 Core",
     "settings_genesis_plus_gx_ym2413_fm": "YM2413 (FM)",
-    "settings_genesis_plus_gx_ym2612_fm_core": "YM2612 (FM) Core"
+    "settings_genesis_plus_gx_ym2612_fm_core": "YM2612 (FM) Core",
+    "emulator_quick_menu_tip": "Press {plus} and {minus} together to open the quick menu"
 }

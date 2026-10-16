@@ -238,5 +238,6 @@
     "settings_genesis_plus_gx_vscroll_limit": "Verbessertes vertikales Scrollen pro Kachel Begrenzung",
     "settings_genesis_plus_gx_ym2413_core": "",
     "settings_genesis_plus_gx_ym2413_fm": "",
-    "settings_genesis_plus_gx_ym2612_fm_core": ""
+    "settings_genesis_plus_gx_ym2612_fm_core": "",
+    "emulator_quick_menu_tip": "Drücke {plus} und {minus} gleichzeitig, um das Schnellmenü zu öffnen"
 }
