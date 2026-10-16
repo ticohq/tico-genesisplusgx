@@ -255,5 +255,6 @@
     "settings_genesis_plus_gx_vscroll_limit": "Limite VScroll",
     "settings_genesis_plus_gx_ym2413_core": "Cœur YM2413",
     "settings_genesis_plus_gx_ym2413_fm": "YM2413 (FM)",
-    "settings_genesis_plus_gx_ym2612_fm_core": "Cœur YM2612 (FM)"
+    "settings_genesis_plus_gx_ym2612_fm_core": "Cœur YM2612 (FM)",
+    "emulator_quick_menu_tip": "Appuyez sur {plus} et {minus} ensemble pour ouvrir le menu rapide"
 }

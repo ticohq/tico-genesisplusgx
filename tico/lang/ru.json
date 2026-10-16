@@ -238,5 +238,6 @@
     "settings_genesis_plus_gx_vscroll_limit": "Предел улучшения верт. скроллинга тайлов",
     "settings_genesis_plus_gx_ym2413_core": "Ядро Master System FM (YM2413)",
     "settings_genesis_plus_gx_ym2413_fm": "",
-    "settings_genesis_plus_gx_ym2612_fm_core": ""
+    "settings_genesis_plus_gx_ym2612_fm_core": "",
+    "emulator_quick_menu_tip": "Нажмите {plus} и {minus} вместе, чтобы открыть быстрое меню"
 }
